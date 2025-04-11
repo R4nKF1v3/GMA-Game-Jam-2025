@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca4ndpyypmguq"]
+
+[ext_resource type="Script" uid="uid://b6gtrebt13j7m" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b0nuuj4hwa6av" path="res://screens/main_menu_screen.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c0fh7ls37n481" path="res://screens/loading_screen.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cwp0iqwjk0dyu" path="res://screens/game_screen.tscn" id="4_7mycd"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ig7tw")
+
+[node name="MainMenuScreen" parent="." instance=ExtResource("2_1bvp3")]
+
+[node name="LoadingScreen" parent="." instance=ExtResource("3_lquwl")]
+
+[node name="GameScreen" parent="." instance=ExtResource("4_7mycd")]

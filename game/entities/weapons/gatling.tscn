@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddm66hyj3i4pm"]
+
+[ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/weapons/mech_weapon.tscn" id="1_qcmy6"]
+[ext_resource type="ArrayMesh" uid="uid://fjbagh6bgwsy" path="res://assets/models/mech/weapons/gatling.res" id="2_n4lli"]
+
+[node name="Gatling" instance=ExtResource("1_qcmy6")]
+
+[node name="TargetPointRaycast" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201348, 0, 0)
+target_position = Vector3(0, 0, 100)
+
+[node name="Gatling" type="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_n4lli")

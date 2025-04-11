@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://h5eqykjww24s"]
+
+[ext_resource type="PackedScene" uid="uid://voggtj33mvkj" path="res://assets/models/mech/Mech.glb" id="1_4my1m"]
+[ext_resource type="Script" uid="uid://ct2qmc571x761" path="res://game/entities/mech.gd" id="1_wa243"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vn6h1"]
+animation = &"Stand"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4my1m"]
+animation = &"RunForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa243"]
+animation = &"RunRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q0gqj"]
+animation = &"RunLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhcjw"]
+animation = &"RunBackward"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l3c2a"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vn6h1")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_4my1m")
+blend_point_1/pos = Vector2(0, 6)
+blend_point_2/node = SubResource("AnimationNodeAnimation_wa243")
+blend_point_2/pos = Vector2(6, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_q0gqj")
+blend_point_3/pos = Vector2(-6, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_xhcjw")
+blend_point_4/pos = Vector2(0, -6)
+min_space = Vector2(-6, -6)
+max_space = Vector2(6, 6)
+snap = Vector2(1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yp3ga"]
+height = 2.8
+radius = 0.771
+
+[node name="Mech" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_wa243")
+
+[node name="Mech" parent="." instance=ExtResource("1_4my1m")]
+
+[node name="Skeleton3D" parent="Mech/Armature" index="0"]
+bones/1/position = Vector3(0.539873, 1.18, 1.1265)
+bones/1/rotation = Quaternion(-3.68599e-05, 0.707107, 0.707107, 3.69217e-05)
+bones/2/position = Vector3(0, 1.48003, 0)
+bones/2/rotation = Quaternion(0, -5.22289e-05, 0, 1)
+bones/3/rotation = Quaternion(-8.89008e-05, 0.460853, 0.887477, -0.00025651)
+bones/3/scale = Vector3(1, 1, 0.999988)
+bones/4/rotation = Quaternion(-0.501078, -1.30671e-07, -4.24629e-11, 0.865402)
+bones/5/rotation = Quaternion(9.39909e-05, 0.825832, 0.563916, 7.36245e-05)
+bones/6/rotation = Quaternion(3.83879e-05, 0.0839467, 0.99647, 0.000213564)
+bones/6/scale = Vector3(1, 0.999999, 0.99999)
+bones/7/rotation = Quaternion(-0.500676, 1.30708e-07, 2.14865e-12, 0.865635)
+bones/8/rotation = Quaternion(-0.000143192, 0.545476, 0.838127, -1.50834e-06)
+bones/9/rotation = Quaternion(0, 5.22289e-05, 0, 1)
+bones/15/position = Vector3(0.540446, 0.280302, 0.499854)
+bones/15/rotation = Quaternion(0.850806, 0.000163776, 6.99968e-05, 0.525481)
+bones/16/position = Vector3(-0.540098, 1.18, 1.1264)
+bones/16/rotation = Quaternion(-3.68599e-05, 0.707107, 0.707107, 3.69217e-05)
+bones/17/position = Vector3(-0.540545, 0.280058, -0.500116)
+bones/17/rotation = Quaternion(0.85069, -7.02394e-05, -1.24059e-05, 0.525667)
+
+[node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83823, -0.0265455)
+
+[node name="ArmL" type="Node3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548721, 0.331795, 0.0265455)
+
+[node name="ArmR" type="Node3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="1"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.554226, 0.331795, 0.0265455)
+
+[node name="ShoulderL" type="Node3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.554226, 0.972286, -0.179642)
+
+[node name="ShoulderR" type="Node3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="3"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.554226, 0.972286, -0.179642)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Mech")
+root_motion_track = NodePath("Armature/Skeleton3D:Root")
+root_motion_local = false
+tree_root = SubResource("AnimationNodeBlendSpace2D_l3c2a")
+anim_player = NodePath("../Mech/AnimationPlayer")
+parameters/blend_position = Vector2(-0.00485039, 0)
+
+[node name="RootMotionView" type="RootMotionView" parent="AnimationTree"]
+animation_path = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43826, 0)
+shape = SubResource("CylinderShape3D_yp3ga")
+
+[editable path="Mech"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bllv1q7eyo4gg"]
+
+[ext_resource type="PackedScene" uid="uid://h5eqykjww24s" path="res://game/entities/mech.tscn" id="1_42rf6"]
+[ext_resource type="Script" uid="uid://brp12snw38mvt" path="res://game/entities/enemy_mech.gd" id="2_4378r"]
+
+[node name="EnemyMech" instance=ExtResource("1_42rf6")]
+script = ExtResource("2_4378r")
+
+[node name="Skeleton3D" parent="Mech/Armature" index="0"]
+bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/3/rotation = Quaternion(-1.3512e-08, 0.460861, 0.887472, -3.93073e-08)
+bones/4/rotation = Quaternion(-0.500893, -1.30688e-07, -2.84217e-13, 0.865509)
+bones/5/rotation = Quaternion(4.86419e-08, 0.825765, 0.564015, -1.15681e-07)
+bones/6/rotation = Quaternion(4.17058e-08, 0.0840747, 0.996459, 2.37569e-08)
+bones/7/rotation = Quaternion(-0.500893, 1.30688e-07, 2.98428e-13, 0.865509)
+bones/8/rotation = Quaternion(-8.16585e-08, 0.545316, 0.838231, 7.41771e-08)
+bones/15/position = Vector3(0.54, 0.28, 0.5)
+bones/15/rotation = Quaternion(0.850651, 0, 0, 0.525731)
+bones/16/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/17/position = Vector3(-0.54, 0.28, -0.5)
+bones/17/rotation = Quaternion(0.850651, 0, 0, 0.525731)
+
+[node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8382, -0.0265455)
+
+[editable path="Mech"]
