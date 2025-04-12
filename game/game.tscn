@@ -1,10 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://db5siclondne7"]
+[gd_scene load_steps=15 format=3 uid="uid://db5siclondne7"]
 
-[ext_resource type="Texture2D" uid="uid://dv6i66rv3yeb" path="res://assets/textures/ground/ground037_alb_ht.png" id="1_dxrkv"]
+[ext_resource type="Script" uid="uid://cmsv0epf4uqu7" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://8rgtifrxno6s" path="res://game/entities/player_mech.tscn" id="1_l1rk1"]
-[ext_resource type="Texture2D" uid="uid://cp7c3ovadhf3c" path="res://assets/textures/ground/ground037_nrm_rgh.png" id="2_dakft"]
-[ext_resource type="Texture2D" uid="uid://b8sivtopab1nb" path="res://assets/textures/ground/rock023_alb_ht.png" id="3_u5opy"]
-[ext_resource type="Texture2D" uid="uid://c532h6o77xvdx" path="res://assets/textures/ground/rock023_nrm_rgh.png" id="4_y36n6"]
+[ext_resource type="Script" uid="uid://dfnkomvqylhy1" path="res://game/level_manager.gd" id="1_vasa2"]
+[ext_resource type="PackedScene" uid="uid://3alnaobov5su" path="res://game/levels/tilesets/starting/starting_tile.tscn" id="3_h7iqs"]
+[ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="4_u5opy"]
+[ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="5_dxrkv"]
+[ext_resource type="Resource" uid="uid://bkr2g0db31hyb" path="res://game/resources/mechcomponents/weapons/gatling/gatling-gamma.tres" id="5_y36n6"]
+[ext_resource type="Resource" uid="uid://cxs8jppecqgjg" path="res://game/resources/mechcomponents/components/core/core-gamma.tres" id="6_j8tme"]
+[ext_resource type="Resource" uid="uid://pfbup08fsu8c" path="res://game/resources/mechcomponents/components/shield/shield-gamma.tres" id="7_3vho3"]
+[ext_resource type="PackedScene" uid="uid://cxby44j55a6xx" path="res://game/shop_menu.tscn" id="9_j8tme"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mq7fr"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,90 +21,27 @@ sky_material = SubResource("ProceduralSkyMaterial_mq7fr")
 [sub_resource type="Environment" id="Environment_vasa2"]
 background_mode = 2
 sky = SubResource("Sky_l1rk1")
-tonemap_mode = 2
-glow_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_l8g03"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dakft"]
+texture = ExtResource("5_dxrkv")
+texture_margin_left = 157.846
+texture_margin_top = 153.949
+texture_margin_right = 438.462
+texture_margin_bottom = 87.6923
+region_rect = Rect2(151, 188, 1014, 423)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_j8tme"]
-noise_type = 2
-frequency = 0.03
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
+[node name="Game" type="Node" node_paths=PackedStringArray("level_manager")]
+script = ExtResource("1_4fuuu")
+level_manager = NodePath("LevelManager")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vho3"]
-seamless = true
-color_ramp = SubResource("Gradient_l8g03")
-noise = SubResource("FastNoiseLite_j8tme")
-
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_qf6n1"]
-_shader_parameters = {
-&"bias_distance": 512.0,
-&"blend_sharpness": 0.87,
-&"depth_blur": 0.0,
-&"enable_macro_variation": true,
-&"enable_projection": true,
-&"height_blending": true,
-&"macro_variation1": Color(1, 1, 1, 1),
-&"macro_variation2": Color(1, 1, 1, 1),
-&"macro_variation_slope": 0.333,
-&"mipmap_bias": 1.0,
-&"noise1_angle": 0.0,
-&"noise1_offset": Vector2(0.5, 0.5),
-&"noise1_scale": 0.04,
-&"noise2_scale": 0.076,
-&"noise3_scale": 0.225,
-&"noise_texture": SubResource("NoiseTexture2D_3vho3"),
-&"projection_angular_division": 2.0,
-&"projection_threshold": 0.8,
-&"world_space_normal_blend": true
-}
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsp63"]
-transparency = 4
-cull_mode = 2
-vertex_color_use_as_albedo = true
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
-
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_b686c"]
-generated_type = 1
-height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_vsp63")
-last_lod = 0
-last_shadow_lod = 0
-lod0_range = 128.0
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_hb504"]
-name = "ground037_alb_ht"
-albedo_texture = ExtResource("1_dxrkv")
-normal_texture = ExtResource("2_dakft")
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ee6o4"]
-name = "rock023_alb_ht"
-id = 1
-albedo_texture = ExtResource("3_u5opy")
-normal_texture = ExtResource("4_y36n6")
-
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_4cobl"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_b686c")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_hb504"), SubResource("Terrain3DTextureAsset_ee6o4")])
-
-[node name="Game" type="Node"]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("level_instances_container", "starting_tile")]
+script = ExtResource("1_vasa2")
+level_instances_container = NodePath("../World/Geometry/LevelInstancesContainer")
+starting_tile = NodePath("../World/Geometry/StartingTile")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -108,14 +50,79 @@ environment = SubResource("Environment_vasa2")
 [node name="World" type="Node3D" parent="."]
 
 [node name="PlayerMech" parent="World" instance=ExtResource("1_l1rk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.652, 3.3986)
-collision_layer = 1
+unique_name_in_owner = true
+starting_weapons = Array[ExtResource("4_u5opy")]([ExtResource("5_y36n6"), ExtResource("5_y36n6")])
+starting_core = ExtResource("6_j8tme")
+starting_shield = ExtResource("7_3vho3")
 
 [node name="Geometry" type="Node3D" parent="World"]
 
-[node name="Terrain3D" type="Terrain3D" parent="World/Geometry"]
-data_directory = "res://game/levels/level1/terraindata"
-material = SubResource("Terrain3DMaterial_qf6n1")
-assets = SubResource("Terrain3DAssets_4cobl")
-top_level = true
+[node name="StartingTile" parent="World/Geometry" instance=ExtResource("3_h7iqs")]
+
+[node name="LevelInstancesContainer" type="Node3D" parent="World/Geometry"]
+unique_name_in_owner = true
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="ShopMenu" parent="Menus" instance=ExtResource("9_j8tme")]
+unique_name_in_owner = true
+
+[node name="MainMenu" type="Control" parent="Menus"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Menus/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dakft")
+
+[node name="StartButton" type="Button" parent="Menus/MainMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -15.5
+offset_right = 22.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "start"
+
+[node name="ExitButton" type="Button" parent="Menus/MainMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = 39.5
+offset_right = 18.5
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "exit"
+
+[connection signal="shop_open_requested" from="World/PlayerMech" to="." method="_on_player_mech_shop_open_requested"]
+[connection signal="shop_closed" from="Menus/ShopMenu" to="." method="_on_shop_menu_shop_closed"]
+[connection signal="pressed" from="Menus/MainMenu/Panel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menus/MainMenu/Panel/ExitButton" to="." method="_on_exit_button_pressed"]

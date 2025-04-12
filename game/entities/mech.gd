@@ -18,13 +18,24 @@ extends CharacterBody3D
 ]
 
 var weapons: Array[MechWeapon] = [null, null, null, null]
-var active_weapons: Array[bool] = [false, false, false, false]
+var core: MechComponentData
+var shield: MechComponentData
+
+var max_hp: float
+var current_hp: float
+var max_shields: float
+var current_shields: float
+var shield_recharge_rate: float
+var shield_recharge_delay: float
+var shield_cd_timer: SceneTreeTimer
 
 var current_float_capacity: float = FLOAT_CAPACITY
 var float_capacity_recharge: float = 0.0
 
 var tilt_target: float = 0.0
-var pivot_target: Basis = Basis.IDENTITY
+var pivot_target: Basis = Basis.IDENTITY.rotated(Vector3.UP, PI)
+
+var shooting: bool : set = _set_shooting
 
 
 func add_weapon(weapon: MechWeapon, slot: int) -> void:
@@ -38,6 +49,16 @@ func add_weapon(weapon: MechWeapon, slot: int) -> void:
 	
 	weapons[slot] = weapon
 	weapon_slots[slot].add_child(weapon)
+
+
+func add_core(p_core: MechComponentData) -> void:
+	core = p_core
+	core.set_active(self)
+
+
+func add_shield(p_shield: MechComponentData) -> void:
+	shield = p_shield
+	shield.set_active(self)
 
 
 func _process_movement(
@@ -91,3 +112,10 @@ func _process_movement(
 	# given the new rotation of the base
 	head.global_basis = pivot_target
 	head.rotation.x = -tilt_target
+
+
+func _set_shooting(p_shooting: bool) -> void:
+	shooting = p_shooting
+	for i in weapons.size():
+		if weapons[i]:
+			weapons[i].shooting = shooting

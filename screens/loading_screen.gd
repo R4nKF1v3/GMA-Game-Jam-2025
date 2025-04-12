@@ -40,4 +40,4 @@ func _play_exit_animation() -> void:
 
 func _call_transition() -> void:
 	await get_tree().create_timer(randf_range(0.0, 1.0)).timeout
-	_change_screen(change_override if change_override else GameState.SCREENS.MENU)
+	_change_screen(change_override if change_override else GameState.SCREENS.GAME)

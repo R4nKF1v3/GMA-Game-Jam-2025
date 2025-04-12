@@ -10,7 +10,6 @@ func _ready() -> void:
 	
 	screens_map = {
 		GameState.SCREENS.LOADING: $LoadingScreen,
-		GameState.SCREENS.MENU: $MainMenuScreen,
 		GameState.SCREENS.GAME: $GameScreen
 	}
 	

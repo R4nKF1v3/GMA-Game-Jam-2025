@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CoreComponentResource" load_steps=2 format=3 uid="uid://b20hic571me0s"]
+
+[ext_resource type="Script" uid="uid://bsc116tm3iioy" path="res://game/entities/components/data/components/CoreComponentResource.gd" id="1_6xq01"]
+
+[resource]
+script = ExtResource("1_6xq01")
+base_hp = 10.0
+hp_per_level = 10.0
+base_shield_capacity = 10.0
+shield_capacity_per_level = 5.0
+metadata/_custom_type_script = "uid://bsc116tm3iioy"

@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv6i66rv3yeb"
-path.bptc="res://.godot/imported/ground037_alb_ht.png-d8e39a91276d5e7da7892eb1ab6e43b8.bptc.ctex"
+uid="uid://cyjy2p8lpfnoe"
+path="res://.godot/imported/ground037_alb_ht.png-d8e39a91276d5e7da7892eb1ab6e43b8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/ground/ground037_alb_ht.png"
-dest_files=["res://.godot/imported/ground037_alb_ht.png-d8e39a91276d5e7da7892eb1ab6e43b8.bptc.ctex"]
+dest_files=["res://.godot/imported/ground037_alb_ht.png-d8e39a91276d5e7da7892eb1ab6e43b8.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

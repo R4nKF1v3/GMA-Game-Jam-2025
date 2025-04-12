@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c2jfe1pl3tq71"]
+
+[ext_resource type="Texture2D" uid="uid://d35cqi7gfvhe6" path="res://assets/textures/ground/rock023_alb_ht.png" id="1_ju8rq"]
+[ext_resource type="Texture2D" uid="uid://d3ewcx18b03r1" path="res://assets/textures/ground/rock023_nrm_rgh.png" id="2_4jui4"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_ju8rq")
+normal_enabled = true
+normal_texture = ExtResource("2_4jui4")
+uv1_triplanar = true

@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxby44j55a6xx"]
+
+[ext_resource type="Script" uid="uid://p4ur4t6vex3i" path="res://game/shop_menu.gd" id="1_b0chi"]
+[ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="2_s0ux8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dakft"]
+texture = ExtResource("2_s0ux8")
+texture_margin_left = 157.846
+texture_margin_top = 153.949
+texture_margin_right = 438.462
+texture_margin_bottom = 87.6923
+region_rect = Rect2(151, 188, 1014, 423)
+
+[node name="ShopMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_b0chi")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dakft")
+
+[node name="CloseShopButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -55.0
+offset_right = 25.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[connection signal="pressed" from="Panel/CloseShopButton" to="." method="_on_close_shop_button_pressed"]

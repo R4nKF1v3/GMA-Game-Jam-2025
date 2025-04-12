@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MechWeaponResource" load_steps=3 format=3 uid="uid://cfnhbfscrg28f"]
+
+[ext_resource type="PackedScene" uid="uid://ddm66hyj3i4pm" path="res://game/entities/components/scenes/weapons/gatling.tscn" id="1_0n4v2"]
+[ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="1_wxey5"]
+
+[resource]
+script = ExtResource("1_wxey5")
+scene = ExtResource("1_0n4v2")
+metadata/_custom_type_script = "uid://bf1thy2cjf5yr"
