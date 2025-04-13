@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://diiaxy0gn7lrs"]
+
+[ext_resource type="Texture2D" uid="uid://cyjy2p8lpfnoe" path="res://assets/textures/ground/ground037_alb_ht.png" id="1_y3nul"]
+[ext_resource type="Texture2D" uid="uid://c2d7re60mf7l5" path="res://assets/textures/ground/ground037_nrm_rgh.png" id="2_7mcns"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_y3nul")
+normal_enabled = true
+normal_texture = ExtResource("2_7mcns")
+uv1_triplanar = true

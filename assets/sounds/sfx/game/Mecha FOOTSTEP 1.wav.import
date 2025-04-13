@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv4y8ytnf2p8r"
+path="res://.godot/imported/Mecha FOOTSTEP 1.wav-5d27dce80eb1e7b16711ee4a9a455cc5.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/game/Mecha FOOTSTEP 1.wav"
+dest_files=["res://.godot/imported/Mecha FOOTSTEP 1.wav-5d27dce80eb1e7b16711ee4a9a455cc5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

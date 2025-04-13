@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://78dm5cuwn3ri"]
+
+[ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/components/scenes/weapons/mech_weapon.tscn" id="1_in0al"]
+[ext_resource type="ArrayMesh" uid="uid://bx4l7qt6vf0dp" path="res://assets/models/mech/weapons/flak.res" id="2_u42xc"]
+[ext_resource type="AudioStream" uid="uid://bw2wivxefe0q3" path="res://assets/sounds/sfx/game/556 Single Isolated WAV.wav" id="3_u42xc"]
+
+[node name="Flak" instance=ExtResource("1_in0al")]
+rate_of_fire = 1.0
+
+[node name="TargetPointRaycast" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204751, 0, 0)
+
+[node name="ShootRaycast" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204751, 0, 0)
+
+[node name="Flak" type="MeshInstance3D" parent="." index="3"]
+mesh = ExtResource("2_u42xc")
+
+[node name="FireSound" parent="." index="4"]
+stream = ExtResource("3_u42xc")

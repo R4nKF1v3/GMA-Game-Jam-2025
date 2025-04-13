@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://lwypenij2ayg"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg-edee32270ad2989c6149461f39356853.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg-edee32270ad2989c6149461f39356853.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

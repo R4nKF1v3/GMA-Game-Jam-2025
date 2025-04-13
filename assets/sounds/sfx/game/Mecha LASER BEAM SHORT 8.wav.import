@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjnws0a5lxrvg"
+path="res://.godot/imported/Mecha LASER BEAM SHORT 8.wav-a9e991b462797590cabbebb64e1c0526.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/game/Mecha LASER BEAM SHORT 8.wav"
+dest_files=["res://.godot/imported/Mecha LASER BEAM SHORT 8.wav-a9e991b462797590cabbebb64e1c0526.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

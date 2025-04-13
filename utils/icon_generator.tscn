@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://tha4cogv2csu"]
+
+[ext_resource type="Script" uid="uid://djs4yt3dr6kkb" path="res://utils/icon_generator.gd" id="1_kt68f"]
+[ext_resource type="ArrayMesh" uid="uid://dyaay66nucqs0" path="res://assets/models/mech/weapons/cannon.res" id="2_j66k5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j66k5"]
+sky_top_color = Color(0.2, 0.168627, 0.133333, 1)
+sky_horizon_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_bottom_color = Color(0.0826605, 0.065772, 0.0461518, 1)
+ground_horizon_color = Color(0.2, 0.168627, 0.133333, 1)
+
+[sub_resource type="Sky" id="Sky_o3rvk"]
+sky_material = SubResource("ProceduralSkyMaterial_j66k5")
+
+[sub_resource type="Environment" id="Environment_xr7im"]
+background_mode = 1
+background_color = Color(0.299436, 0.431098, 0.808165, 1)
+sky = SubResource("Sky_o3rvk")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+
+[node name="IconGenerator" type="SubViewport" node_paths=PackedStringArray("object_to_render")]
+script = ExtResource("1_kt68f")
+object_to_render = NodePath("ObjectToRender")
+save_path = "res://assets/textures/components/cannon_icon.png"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.68045, -0.63462, 0.366396, -1.49013e-08, 0.499998, 0.866027, -0.732795, 0.589287, -0.340223, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xr7im")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.998135, 0.0610485, 0, -0.0610485, 0.998135, 0.005409, 0, 0.727781)
+fov = 25.5
+
+[node name="ObjectToRender" type="Node3D" parent="."]
+transform = Transform3D(0.224575, 0, -0.0930219, -0.035598, 0.224575, -0.0859411, 0.0859411, 0.0930219, 0.20748, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObjectToRender"]
+mesh = ExtResource("2_j66k5")

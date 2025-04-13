@@ -1,9 +1,14 @@
-[gd_resource type="Resource" script_class="MechWeaponResource" load_steps=3 format=3 uid="uid://bq8gnr5u6amqd"]
+[gd_resource type="Resource" script_class="MechWeaponResource" load_steps=4 format=3 uid="uid://bq8gnr5u6amqd"]
 
 [ext_resource type="PackedScene" uid="uid://ddm66hyj3i4pm" path="res://game/entities/components/scenes/weapons/gatling.tscn" id="1_63g4u"]
 [ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="1_m22bg"]
+[ext_resource type="Texture2D" uid="uid://dclqigpgm4dwh" path="res://assets/textures/components/gatling_icon.png" id="1_y72hx"]
 
 [resource]
 script = ExtResource("1_m22bg")
+icon = ExtResource("1_y72hx")
 scene = ExtResource("1_63g4u")
+base_damage = 0.1
+damage_per_level = 0.1
+heat_buildup = 0.75
 metadata/_custom_type_script = "uid://bf1thy2cjf5yr"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://8rgtifrxno6s"]
+[gd_scene load_steps=19 format=3 uid="uid://8rgtifrxno6s"]
 
 [ext_resource type="PackedScene" uid="uid://h5eqykjww24s" path="res://game/entities/mech.tscn" id="1_hicsm"]
 [ext_resource type="Script" uid="uid://gp885w8rqekq" path="res://game/entities/player_mech.gd" id="2_sx2kh"]
 [ext_resource type="PackedScene" uid="uid://cxu2lgqduekdn" path="res://assets/models/cockpit/cockpit_model.glb" id="3_0nelg"]
 [ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="3_eq626"]
+[ext_resource type="Texture2D" uid="uid://c8y8xpg66j7jx" path="res://assets/textures/vecteezy_capybara-with-donut_54792827.png" id="5_oyl8l"]
+[ext_resource type="Texture2D" uid="uid://bggagshtlh2oe" path="res://assets/textures/vecteezy_capybara-clear-background_55758280.png" id="5_phhfm"]
 [ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="8_k33q6"]
 
 [sub_resource type="Animation" id="Animation_phhfm"]
@@ -44,13 +46,49 @@ _data = {
 &"loop": SubResource("Animation_eq626")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u21ss"]
+[sub_resource type="Gradient" id="Gradient_eq626"]
+offsets = PackedFloat32Array(0.601266, 1)
+colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_phhfm"]
+gradient = SubResource("Gradient_eq626")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq626"]
 atlas = ExtResource("8_k33q6")
 region = Rect2(3754, 836, 181, 180)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k33q6"]
 atlas = ExtResource("8_k33q6")
 region = Rect2(3656, 1208, 376, 376)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eq626"]
+texture = ExtResource("8_k33q6")
+texture_margin_left = 15.4
+texture_margin_top = 14.4946
+texture_margin_right = 30.4579
+texture_margin_bottom = 25.6198
+region_rect = Rect2(2647, 3462, 936, 125)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq626"]
+bg_color = Color(1, 0.827451, 0.219608, 1)
+border_width_left = 14
+border_width_top = 13
+border_width_right = 26
+border_width_bottom = 24
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Gradient" id="Gradient_oyl8l"]
+offsets = PackedFloat32Array(0.417722, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.25098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k33q6"]
+gradient = SubResource("Gradient_oyl8l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [node name="PlayerMech" instance=ExtResource("1_hicsm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -64,49 +102,39 @@ starting_weapons = Array[ExtResource("3_eq626")]([])
 starting_core = null
 starting_shield = null
 ACCEL = 24.0
+HEAT_CAPACITY = 400.0
+HEAT_REGEN_RATE = 80.0
+CAN_SHIELD_GATE = true
+target_collision = 5
 
 [node name="Skeleton3D" parent="Mech/Armature" index="0"]
-bones/1/position = Vector3(0.539613, 1.18, 1.12655)
-bones/1/rotation = Quaternion(-0.000117762, 0.707107, 0.707107, 0.000117823)
-bones/2/position = Vector3(0, 1.48002, 0)
-bones/2/rotation = Quaternion(0, -0.000159574, 0, 1)
-bones/3/rotation = Quaternion(5.28939e-05, 0.460796, 0.887506, 0.000248759)
-bones/3/scale = Vector3(1, 1, 0.999988)
-bones/4/rotation = Quaternion(-0.500871, -1.3067e-07, 8.13967e-12, 0.865522)
-bones/5/rotation = Quaternion(-3.34609e-05, 0.825805, 0.563956, 4.99419e-05)
-bones/6/rotation = Quaternion(-3.67323e-05, 0.0841059, 0.996457, -0.000111687)
-bones/6/scale = Vector3(1, 0.999999, 0.99999)
-bones/7/rotation = Quaternion(-0.501076, 1.30631e-07, 2.15361e-11, 0.865403)
-bones/8/rotation = Quaternion(0.000110956, 0.545561, 0.838071, 0.000156195)
-bones/9/rotation = Quaternion(0, 0.000159574, 0, 1)
-bones/15/position = Vector3(0.539336, 0.280119, 0.499854)
-bones/15/rotation = Quaternion(0.850742, -0.000217841, -3.48588e-05, 0.525583)
-bones/16/position = Vector3(-0.540299, 1.18, 1.12622)
-bones/16/rotation = Quaternion(-0.000117762, 0.707107, 0.707107, 0.000117823)
-bones/17/position = Vector3(-0.539538, 0.280314, -0.500116)
-bones/17/rotation = Quaternion(0.850856, 0.000199187, 3.67694e-05, 0.525399)
+bones/2/position = Vector3(0, 1.48169, 0)
+bones/3/rotation = Quaternion(-1.20135e-08, 0.469317, 0.88303, -3.60485e-08)
+bones/4/rotation = Quaternion(-0.493306, -1.31344e-07, -2.76668e-13, 0.869856)
+bones/5/rotation = Quaternion(5.00158e-08, 0.819221, 0.573477, -1.18347e-07)
+bones/6/rotation = Quaternion(4.15446e-08, 0.058745, 0.998273, 1.92283e-08)
+bones/7/rotation = Quaternion(-0.487414, 1.31845e-07, 2.83329e-13, 0.873171)
+bones/8/rotation = Quaternion(-7.78983e-08, 0.563458, 0.826145, 7.49034e-08)
+bones/15/position = Vector3(0.54, 0.296869, 0.535274)
+bones/15/rotation = Quaternion(0.834608, 7.20765e-18, 4.45458e-18, 0.550844)
+bones/17/position = Vector3(-0.54, 0.299181, -0.543438)
+bones/17/rotation = Quaternion(0.866882, -5.98487e-18, -3.69885e-18, 0.498514)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83822, -0.0265455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83989, -0.0265455)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D/Cabin_2" index="0"]
 rotation_edit_mode = 2
 layers = 2
 
-[node name="ArmL" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="0"]
-unique_name_in_owner = true
-
-[node name="ArmR" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="1"]
-unique_name_in_owner = true
-
-[node name="ShoulderL" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="2"]
-unique_name_in_owner = true
-
-[node name="ShoulderR" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="3"]
-unique_name_in_owner = true
-
 [node name="cockpit_model" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="4" instance=ExtResource("3_0nelg")]
 transform = Transform3D(0.335, 0, 0, 0, 0.335, 0, 0, 0, 0.335, 0, 0.104493, -0.268973)
+
+[node name="Sprite3D" type="Sprite3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2/cockpit_model" index="35"]
+transform = Transform3D(1, -7.81284e-08, 4.81966e-08, 7.81285e-08, 0.448695, -0.893685, 4.81966e-08, 0.893685, 0.448696, 0.463086, 0.623093, 1.76682)
+layers = 4
+pixel_size = 0.0001
+texture = ExtResource("5_oyl8l")
 
 [node name="Camera" type="Camera3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="5"]
 unique_name_in_owner = true
@@ -117,6 +145,12 @@ fov = 80.0
 size = 7.31429
 near = 0.1
 far = 16384.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="6"]
+transform = Transform3D(1, 1.56704e-08, 1.41591e-09, -1.56704e-08, 0.983804, 0.179249, 1.41592e-09, -0.179249, 0.983804, -2.78607e-08, 0.539561, 0.318689)
+layers = 2
+pixel_size = 0.0002
+texture = ExtResource("5_phhfm")
 
 [node name="ShopCameraPivot" type="Node3D" parent="." index="3"]
 
@@ -156,22 +190,42 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="PlayerUI/HUD/CameraCrosshairs" index="0"]
-self_modulate = Color(0.793739, 0.621351, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_u21ss")
-expand_mode = 2
-stretch_mode = 5
+visible = false
+layout_mode = 0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = SubResource("GradientTexture2D_phhfm")
+expand_mode = 1
+
+[node name="HpProgressBar" type="TextureProgressBar" parent="PlayerUI/HUD/CameraCrosshairs" index="1"]
+unique_name_in_owner = true
+self_modulate = Color(0.976471, 0, 0, 1)
+layout_mode = 0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+step = 0.01
+value = 100.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_eq626")
+
+[node name="ShieldsProgressBar" type="TextureProgressBar" parent="PlayerUI/HUD/CameraCrosshairs" index="2"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0.584314, 1, 1)
+layout_mode = 0
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+step = 0.01
+value = 100.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_eq626")
 
 [node name="WeaponCrosshairs" type="Control" parent="PlayerUI/HUD" index="1"]
 unique_name_in_owner = true
@@ -371,5 +425,57 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_k33q6")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="HeatProgressBar" type="ProgressBar" parent="PlayerUI/HUD" index="2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -468.0
+offset_top = -64.0
+offset_right = 468.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxTexture_eq626")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eq626")
+step = 0.1
+value = 50.0
+show_percentage = false
+
+[node name="ShieldHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="3"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.219608, 0.556863, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_k33q6")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="HpHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="4"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 0.027451, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_k33q6")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[connection signal="heat_updated" from="." to="." method="_on_heat_updated"]
+[connection signal="hp_hit" from="." to="." method="_on_hp_hit"]
+[connection signal="shields_hit" from="." to="." method="_on_shields_hit"]
 
 [editable path="Mech"]

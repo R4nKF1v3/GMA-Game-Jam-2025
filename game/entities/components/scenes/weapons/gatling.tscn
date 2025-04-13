@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddm66hyj3i4pm"]
+[gd_scene load_steps=4 format=3 uid="uid://ddm66hyj3i4pm"]
 
 [ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/components/scenes/weapons/mech_weapon.tscn" id="1_qcmy6"]
 [ext_resource type="ArrayMesh" uid="uid://fjbagh6bgwsy" path="res://assets/models/mech/weapons/gatling.res" id="2_n4lli"]
+[ext_resource type="AudioStream" uid="uid://v05xdu5kneib" path="res://assets/sounds/sfx/game/22LR Single Isolated WAV.wav" id="3_f0qs8"]
 
 [node name="Gatling" instance=ExtResource("1_qcmy6")]
+rate_of_fire = 0.1
 
 [node name="TargetPointRaycast" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201348, 0, 0)
@@ -11,3 +13,11 @@ target_position = Vector3(0, 0, 100)
 
 [node name="Gatling" type="MeshInstance3D" parent="." index="1"]
 mesh = ExtResource("2_n4lli")
+
+[node name="ShootRaycast" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201, 0, 0)
+enabled = true
+target_position = Vector3(0, 0, 1000)
+
+[node name="FireSound" parent="." index="4"]
+stream = ExtResource("3_f0qs8")

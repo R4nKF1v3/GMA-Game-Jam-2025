@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxby44j55a6xx"]
+[gd_scene load_steps=12 format=3 uid="uid://cxby44j55a6xx"]
 
 [ext_resource type="Script" uid="uid://p4ur4t6vex3i" path="res://game/shop_menu.gd" id="1_b0chi"]
 [ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="2_s0ux8"]
+[ext_resource type="PackedScene" uid="uid://dmhar1o6sqcii" path="res://game/workshop/item_component.tscn" id="3_s0ux8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dakft"]
 texture = ExtResource("2_s0ux8")
@@ -10,6 +11,42 @@ texture_margin_top = 153.949
 texture_margin_right = 438.462
 texture_margin_bottom = 87.6923
 region_rect = Rect2(151, 188, 1014, 423)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0chi"]
+font_size = 25
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0chi"]
+texture = ExtResource("2_s0ux8")
+texture_margin_left = 61.0
+texture_margin_top = 59.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(1376, 2132, 300, 148)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s0ux8"]
+font_size = 21
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0ux8"]
+texture = ExtResource("2_s0ux8")
+texture_margin_left = 61.0
+texture_margin_top = 59.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(1376, 2132, 300, 148)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ds1cr"]
+font_size = 24
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ds1cr"]
+texture = ExtResource("2_s0ux8")
+texture_margin_left = 61.0
+texture_margin_top = 59.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(1301, 136, 300, 149)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyvf5"]
+font_size = 60
 
 [node name="ShopMenu" type="Control"]
 layout_mode = 3
@@ -20,10 +57,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_b0chi")
+component_scene = ExtResource("3_s0ux8")
 metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0.501961)
+self_modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -44,11 +82,406 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -25.0
-offset_top = -55.0
+offset_top = 2.0
 offset_right = 25.0
-offset_bottom = -24.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Close"
 
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -36.0
+offset_right = 60.0
+offset_bottom = -1.0
+grow_horizontal = 2
+text = "workshop"
+label_settings = SubResource("LabelSettings_b0chi")
+
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = 50.0
+offset_right = 2.0
+offset_bottom = -16.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_b0chi")
+
+[node name="Label" type="Label" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_top = -31.0
+offset_right = 43.5
+offset_bottom = -1.0
+grow_horizontal = 2
+text = "installed"
+label_settings = SubResource("LabelSettings_s0ux8")
+
+[node name="Panel" type="Control" parent="Panel/Panel"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 43.0
+offset_right = -12.0
+offset_bottom = 32.0
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = -23.0
+offset_right = 35.0
+grow_horizontal = 2
+text = "weapons"
+horizontal_alignment = 1
+
+[node name="WeaponComponentsContainer" type="GridContainer" parent="Panel/Panel/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="ItemComponent" parent="Panel/Panel/Panel/WeaponComponentsContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ItemComponent2" parent="Panel/Panel/Panel/WeaponComponentsContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ItemComponent3" parent="Panel/Panel/Panel/WeaponComponentsContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ItemComponent4" parent="Panel/Panel/Panel/WeaponComponentsContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Panel2" type="Control" parent="Panel/Panel"]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 64.0
+offset_right = -12.0
+offset_bottom = -49.0
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.5
+offset_top = 4.0
+offset_right = -69.5
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "core"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 93.5
+offset_top = 4.0
+offset_right = 163.5
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "shield"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoreComponent" parent="Panel/Panel/Panel2/HBoxContainer" instance=ExtResource("3_s0ux8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ShieldComponent" parent="Panel/Panel/Panel2/HBoxContainer" instance=ExtResource("3_s0ux8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -22.0
+offset_bottom = -86.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_s0ux8")
+
+[node name="Label" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 9.0
+offset_right = 124.0
+offset_bottom = 32.0
+text = "in stock"
+label_settings = SubResource("LabelSettings_ds1cr")
+
+[node name="Panel" type="Panel" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 90.0
+offset_right = -4.0
+offset_bottom = -14.0
+
+[node name="Label" type="Label" parent="Panel/Panel2/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -6.0
+grow_horizontal = 2
+text = "weapons"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponsStockContainer" type="VBoxContainer" parent="Panel/Panel2/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ItemComponent" parent="Panel/Panel2/Panel/ScrollContainer/WeaponsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent2" parent="Panel/Panel2/Panel/ScrollContainer/WeaponsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent3" parent="Panel/Panel2/Panel/ScrollContainer/WeaponsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent4" parent="Panel/Panel2/Panel/ScrollContainer/WeaponsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent5" parent="Panel/Panel2/Panel/ScrollContainer/WeaponsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 40.0
+offset_right = -9.0
+offset_bottom = -7.0
+
+[node name="Label" type="Label" parent="Panel/Panel2/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = -29.0
+offset_right = 35.0
+offset_bottom = -6.0
+grow_horizontal = 2
+text = "cores"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel2/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoresStockContainer" type="VBoxContainer" parent="Panel/Panel2/Panel2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ItemComponent" parent="Panel/Panel2/Panel2/ScrollContainer/CoresStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent2" parent="Panel/Panel2/Panel2/ScrollContainer/CoresStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent3" parent="Panel/Panel2/Panel2/ScrollContainer/CoresStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent4" parent="Panel/Panel2/Panel2/ScrollContainer/CoresStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent5" parent="Panel/Panel2/Panel2/ScrollContainer/CoresStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 40.0
+offset_right = -11.0
+offset_bottom = -14.0
+
+[node name="Label" type="Label" parent="Panel/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = -29.0
+offset_right = 35.0
+offset_bottom = -6.0
+grow_horizontal = 2
+text = "shields"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShieldsStockContainer" type="VBoxContainer" parent="Panel/Panel2/Panel3/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ItemComponent" parent="Panel/Panel2/Panel3/ScrollContainer/ShieldsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent2" parent="Panel/Panel2/Panel3/ScrollContainer/ShieldsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent3" parent="Panel/Panel2/Panel3/ScrollContainer/ShieldsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent4" parent="Panel/Panel2/Panel3/ScrollContainer/ShieldsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="ItemComponent5" parent="Panel/Panel2/Panel3/ScrollContainer/ShieldsStockContainer" instance=ExtResource("3_s0ux8")]
+layout_mode = 2
+
+[node name="DiscardPopup" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ds1cr")
+
+[node name="Label" type="Label" parent="DiscardPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "discard?"
+label_settings = SubResource("LabelSettings_kyvf5")
+horizontal_alignment = 1
+
+[node name="DiscardYesButton" type="Button" parent="DiscardPopup"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -69.0
+offset_right = -22.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "yes"
+
+[node name="DiscardNoButton" type="Button" parent="DiscardPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -69.0
+offset_right = 136.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "no"
+
 [connection signal="pressed" from="Panel/CloseShopButton" to="." method="_on_close_shop_button_pressed"]
+[connection signal="pressed" from="DiscardPopup/DiscardNoButton" to="DiscardPopup" method="hide"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MechWeaponResource" load_steps=4 format=3 uid="uid://vjhduv63snig"]
+
+[ext_resource type="Texture2D" uid="uid://ol581fl8jfgf" path="res://assets/textures/components/cannon_icon.png" id="1_41f6u"]
+[ext_resource type="PackedScene" uid="uid://vr2u4h8hcu2" path="res://game/entities/components/scenes/weapons/cannon.tscn" id="2_41f6u"]
+[ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="3_mm60o"]
+
+[resource]
+script = ExtResource("3_mm60o")
+icon = ExtResource("1_41f6u")
+scene = ExtResource("2_41f6u")
+base_damage = 5.0
+damage_per_level = 2.5
+heat_buildup = 10.0
+metadata/_custom_type_script = "uid://bf1thy2cjf5yr"

@@ -1,15 +1,44 @@
-[gd_scene load_steps=15 format=3 uid="uid://db5siclondne7"]
+[gd_scene load_steps=46 format=3 uid="uid://db5siclondne7"]
 
 [ext_resource type="Script" uid="uid://cmsv0epf4uqu7" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://8rgtifrxno6s" path="res://game/entities/player_mech.tscn" id="1_l1rk1"]
 [ext_resource type="Script" uid="uid://dfnkomvqylhy1" path="res://game/level_manager.gd" id="1_vasa2"]
 [ext_resource type="PackedScene" uid="uid://3alnaobov5su" path="res://game/levels/tilesets/starting/starting_tile.tscn" id="3_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://4j2vg1caabwx" path="res://game/levels/tilesets/corridors/tile_corridor_1.tscn" id="4_3vho3"]
 [ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="4_u5opy"]
 [ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="5_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://cwwetqdjoyqap" path="res://game/levels/tilesets/chambers/tile_chamber_1.tscn" id="5_qf6n1"]
 [ext_resource type="Resource" uid="uid://bkr2g0db31hyb" path="res://game/resources/mechcomponents/weapons/gatling/gatling-gamma.tres" id="5_y36n6"]
 [ext_resource type="Resource" uid="uid://cxs8jppecqgjg" path="res://game/resources/mechcomponents/components/core/core-gamma.tres" id="6_j8tme"]
+[ext_resource type="PackedScene" uid="uid://bllv1q7eyo4gg" path="res://game/entities/enemy_mech.tscn" id="6_vsp63"]
 [ext_resource type="Resource" uid="uid://pfbup08fsu8c" path="res://game/resources/mechcomponents/components/shield/shield-gamma.tres" id="7_3vho3"]
+[ext_resource type="Resource" uid="uid://cfnhbfscrg28f" path="res://game/resources/mechcomponents/weapons/gatling/gatling-alpha.tres" id="8_dxwpq"]
 [ext_resource type="PackedScene" uid="uid://cxby44j55a6xx" path="res://game/shop_menu.tscn" id="9_j8tme"]
+[ext_resource type="Resource" uid="uid://bq8gnr5u6amqd" path="res://game/resources/mechcomponents/weapons/gatling/gatling-beta.tres" id="9_mhvfb"]
+[ext_resource type="Script" uid="uid://bsc116tm3iioy" path="res://game/entities/components/data/components/CoreComponentResource.gd" id="11_5e03w"]
+[ext_resource type="Resource" uid="uid://bvwyi0jlfjqmu" path="res://game/resources/mechcomponents/weapons/cannon/cannon-alpha.tres" id="11_urpib"]
+[ext_resource type="Resource" uid="uid://5lbaktr0ncf3" path="res://game/resources/mechcomponents/weapons/cannon/cannon-beta.tres" id="12_cieqw"]
+[ext_resource type="Resource" uid="uid://b20hic571me0s" path="res://game/resources/mechcomponents/components/core/core-alpha.tres" id="12_leid8"]
+[ext_resource type="Resource" uid="uid://6yqkjd4yokmf" path="res://game/resources/mechcomponents/components/core/core-beta.tres" id="13_8bboj"]
+[ext_resource type="Resource" uid="uid://vjhduv63snig" path="res://game/resources/mechcomponents/weapons/cannon/cannon-gamma.tres" id="13_ta815"]
+[ext_resource type="Resource" uid="uid://da1k55inn6ue2" path="res://game/resources/mechcomponents/weapons/flak/flak-alpha.tres" id="14_64wtb"]
+[ext_resource type="Resource" uid="uid://cioc2lr2mkwof" path="res://game/resources/mechcomponents/weapons/flak/flak-beta.tres" id="15_0rekh"]
+[ext_resource type="Script" uid="uid://buqr6uq3coif" path="res://game/entities/components/data/components/ShieldComponentResource.gd" id="15_q52ks"]
+[ext_resource type="Resource" uid="uid://btmubtmubo8tu" path="res://game/resources/mechcomponents/components/shield/shield-alpha.tres" id="16_jucfl"]
+[ext_resource type="Resource" uid="uid://c52sbte3thqm7" path="res://game/resources/mechcomponents/components/shield/shield-beta.tres" id="17_jdpby"]
+[ext_resource type="AudioStream" uid="uid://bij1j6v3g1b13" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg" id="19_posua"]
+[ext_resource type="AudioStream" uid="uid://b8fwb134vbpgb" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 02 - Agony Space-deep - loop.ogg" id="20_gvtgv"]
+[ext_resource type="Resource" uid="uid://c7qfftg5j7qmm" path="res://game/resources/mechcomponents/weapons/flak/flak-gamma.tres" id="20_mhvfb"]
+[ext_resource type="AudioStream" uid="uid://lwypenij2ayg" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg" id="21_5ywmu"]
+[ext_resource type="AudioStream" uid="uid://cx18s8n8osb0c" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 04 - Eating offal - loop.ogg" id="22_mhp6k"]
+[ext_resource type="AudioStream" uid="uid://dotfseq0a7ju8" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="23_vkvnp"]
+[ext_resource type="AudioStream" uid="uid://dxvfjdfk0ha1q" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="24_urpib"]
+[ext_resource type="AudioStream" uid="uid://ck6c6a7m5ahkl" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 07 - Suffocation - loop.ogg" id="25_cieqw"]
+[ext_resource type="AudioStream" uid="uid://eajb33bmrv6j" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 08 - While We Sleep - loop.ogg" id="26_ta815"]
+[ext_resource type="AudioStream" uid="uid://c25wex1nj25yi" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 09 - Soul evisceration - loop.ogg" id="27_64wtb"]
+[ext_resource type="AudioStream" uid="uid://cgbqtjbswpv62" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 10 - Rotten Offal - loop.ogg" id="28_0rekh"]
+[ext_resource type="AudioStream" uid="uid://chcw0qy2c0li5" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg" id="29_281ou"]
+[ext_resource type="AudioStream" uid="uid://cq2uh4apmqjly" path="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 12 - At the Gates - loop.ogg" id="30_nrbry"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mq7fr"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,7 +48,8 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_mq7fr")
 
 [sub_resource type="Environment" id="Environment_vasa2"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.586743, 0.653149, 0.617793, 1)
 sky = SubResource("Sky_l1rk1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dakft"]
@@ -30,42 +60,61 @@ texture_margin_right = 438.462
 texture_margin_bottom = 87.6923
 region_rect = Rect2(151, 188, 1014, 423)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhvfb"]
+texture = ExtResource("5_dxrkv")
+texture_margin_left = 61.0
+texture_margin_top = 59.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(1301, 136, 300, 149)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5e03w"]
+font_size = 60
+
 [node name="Game" type="Node" node_paths=PackedStringArray("level_manager")]
 script = ExtResource("1_4fuuu")
 level_manager = NodePath("LevelManager")
-
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("level_instances_container", "starting_tile")]
-script = ExtResource("1_vasa2")
-level_instances_container = NodePath("../World/Geometry/LevelInstancesContainer")
-starting_tile = NodePath("../World/Geometry/StartingTile")
+bgm_bus = "BGM"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vasa2")
 
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("player", "level_instances_container", "enemies_container")]
+script = ExtResource("1_vasa2")
+player = NodePath("../World/PlayerMech")
+level_instances_container = NodePath("../World/LevelInstancesContainer")
+enemies_container = NodePath("../World/EntitiesContainer")
+starting_tile_scene = ExtResource("3_h7iqs")
+tiles_scenes = Array[PackedScene]([ExtResource("4_3vho3"), ExtResource("5_qf6n1")])
+base_tiles = 1
+enemy_scene = ExtResource("6_vsp63")
+weapons_available = Array[ExtResource("4_u5opy")]([ExtResource("8_dxwpq"), ExtResource("9_mhvfb"), ExtResource("5_y36n6"), ExtResource("11_urpib"), ExtResource("12_cieqw"), ExtResource("13_ta815"), ExtResource("14_64wtb"), ExtResource("15_0rekh"), ExtResource("20_mhvfb")])
+cores_available = Array[ExtResource("11_5e03w")]([ExtResource("12_leid8"), ExtResource("13_8bboj"), ExtResource("6_j8tme")])
+shields_available = Array[ExtResource("15_q52ks")]([ExtResource("16_jucfl"), ExtResource("17_jdpby"), ExtResource("7_3vho3")])
+music_tracks = Array[AudioStream]([ExtResource("19_posua"), ExtResource("20_gvtgv"), ExtResource("21_5ywmu"), ExtResource("22_mhp6k"), ExtResource("23_vkvnp"), ExtResource("24_urpib"), ExtResource("25_cieqw"), ExtResource("26_ta815"), ExtResource("27_64wtb"), ExtResource("28_0rekh"), ExtResource("29_281ou"), ExtResource("30_nrbry")])
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="PlayerMech" parent="World" instance=ExtResource("1_l1rk1")]
 unique_name_in_owner = true
-starting_weapons = Array[ExtResource("4_u5opy")]([ExtResource("5_y36n6"), ExtResource("5_y36n6")])
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+starting_weapons = Array[ExtResource("4_u5opy")]([ExtResource("5_y36n6"), ExtResource("5_y36n6"), ExtResource("20_mhvfb"), ExtResource("20_mhvfb")])
 starting_core = ExtResource("6_j8tme")
 starting_shield = ExtResource("7_3vho3")
 
-[node name="Geometry" type="Node3D" parent="World"]
+[node name="LevelInstancesContainer" type="Node3D" parent="World"]
 
-[node name="StartingTile" parent="World/Geometry" instance=ExtResource("3_h7iqs")]
-
-[node name="LevelInstancesContainer" type="Node3D" parent="World/Geometry"]
-unique_name_in_owner = true
+[node name="EntitiesContainer" type="Node3D" parent="World"]
 
 [node name="Menus" type="CanvasLayer" parent="."]
 
-[node name="ShopMenu" parent="Menus" instance=ExtResource("9_j8tme")]
+[node name="ShopMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("9_j8tme")]
 unique_name_in_owner = true
+player = NodePath("../../World/PlayerMech")
 
 [node name="MainMenu" type="Control" parent="Menus"]
 unique_name_in_owner = true
@@ -80,6 +129,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="Menus/MainMenu"]
+self_modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -122,7 +172,86 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "exit"
 
+[node name="KilledWindow" type="Control" parent="Menus"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="DiscardPopup" type="Panel" parent="Menus/KilledWindow"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhvfb")
+
+[node name="Label" type="Label" parent="Menus/KilledWindow/DiscardPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "dead"
+label_settings = SubResource("LabelSettings_5e03w")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Menus/KilledWindow/DiscardPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -69.0
+offset_right = -22.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "restart"
+
+[node name="ExitButton" type="Button" parent="Menus/KilledWindow/DiscardPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -69.0
+offset_right = 136.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "exit"
+
+[connection signal="killed" from="World/PlayerMech" to="." method="_on_player_mech_killed"]
 [connection signal="shop_open_requested" from="World/PlayerMech" to="." method="_on_player_mech_shop_open_requested"]
 [connection signal="shop_closed" from="Menus/ShopMenu" to="." method="_on_shop_menu_shop_closed"]
 [connection signal="pressed" from="Menus/MainMenu/Panel/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menus/MainMenu/Panel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Menus/KilledWindow/DiscardPopup/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Menus/KilledWindow/DiscardPopup/ExitButton" to="." method="_on_exit_button_pressed"]

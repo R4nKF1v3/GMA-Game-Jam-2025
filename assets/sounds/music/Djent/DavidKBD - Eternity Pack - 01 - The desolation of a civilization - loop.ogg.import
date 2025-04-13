@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bij1j6v3g1b13"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg-bbd5582c0b255924c93b01183054b61a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg-bbd5582c0b255924c93b01183054b61a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

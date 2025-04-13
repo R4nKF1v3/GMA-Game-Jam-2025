@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bi0oukmnwkl8q" path="res://screens/default_screen.tscn" id="1_20mec"]
 [ext_resource type="Script" uid="uid://c5sswmaqt83ee" path="res://screens/loading_screen.gd" id="2_ceoa7"]
-[ext_resource type="Texture2D" uid="uid://b62mqw7jalfh8" path="res://icon.svg" id="3_ceoa7"]
+[ext_resource type="Texture2D" uid="uid://c8y8xpg66j7jx" path="res://assets/textures/vecteezy_capybara-with-donut_54792827.png" id="3_ceoa7"]
 
 [sub_resource type="Animation" id="4"]
 length = 0.001
@@ -422,4 +422,5 @@ libraries = {
 autoplay = "spin"
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/Container/FadeBG/StaticCont/MainContainer/Pivot" index="1"]
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_ceoa7")

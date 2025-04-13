@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ShieldComponentResource" load_steps=2 format=3 uid="uid://pfbup08fsu8c"]
+[gd_resource type="Resource" script_class="ShieldComponentResource" load_steps=3 format=3 uid="uid://pfbup08fsu8c"]
 
+[ext_resource type="Texture2D" uid="uid://brji65bjr1v2g" path="res://assets/textures/components/vecteezy_futuristic-orb-advanced-technology-glowing-core-mechanical_55920392.png" id="1_bdfhl"]
 [ext_resource type="Script" uid="uid://buqr6uq3coif" path="res://game/entities/components/data/components/ShieldComponentResource.gd" id="1_tgh76"]
 
 [resource]
 script = ExtResource("1_tgh76")
+icon = ExtResource("1_bdfhl")
 base_shield_recharge_rate = 1.0
 recharge_rate_per_level = 0.75
 base_shield_recharge_cooldown = 5.0

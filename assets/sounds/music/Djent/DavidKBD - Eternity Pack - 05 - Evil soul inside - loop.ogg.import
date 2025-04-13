@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dotfseq0a7ju8"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg-151768078a0bfdd6fdb00a65b0cd871f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg-151768078a0bfdd6fdb00a65b0cd871f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

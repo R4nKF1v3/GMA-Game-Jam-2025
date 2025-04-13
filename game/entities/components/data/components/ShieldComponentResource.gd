@@ -18,3 +18,17 @@ func handle_active(mech: Mech, level: int) -> void:
 		shield_cooldown_per_level,
 		level
 	)
+
+func get_stats(level: int) -> PackedStringArray:
+	return PackedStringArray([
+		tr("recharge: ") + str(_get_scaled_stat(
+			base_shield_recharge_rate,
+			recharge_rate_per_level,
+			level
+		)),
+			tr("cooldown: ") + str(_get_scaled_stat(
+			base_shield_recharge_cooldown,
+			shield_cooldown_per_level,
+			level
+		))
+	])

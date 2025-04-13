@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CoreComponentResource" load_steps=2 format=3 uid="uid://6yqkjd4yokmf"]
+[gd_resource type="Resource" script_class="CoreComponentResource" load_steps=3 format=3 uid="uid://6yqkjd4yokmf"]
 
 [ext_resource type="Script" uid="uid://bsc116tm3iioy" path="res://game/entities/components/data/components/CoreComponentResource.gd" id="1_myfxd"]
+[ext_resource type="Texture2D" uid="uid://cpj0c7ap3bu7x" path="res://assets/textures/components/vecteezy_dramatic-minimalist-sci-fi-power-core-with-glowing-energy_59916993.png" id="1_s33x8"]
 
 [resource]
 script = ExtResource("1_myfxd")
-base_hp = 10.0
-hp_per_level = 5.0
+base_hp = 5.0
+hp_per_level = 2.5
 base_shield_capacity = 10.0
-shield_capacity_per_level = 10.0
+shield_capacity_per_level = 5.0
+icon = ExtResource("1_s33x8")
 metadata/_custom_type_script = "uid://bsc116tm3iioy"

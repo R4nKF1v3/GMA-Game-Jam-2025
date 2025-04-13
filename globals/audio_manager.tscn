@@ -4,5 +4,7 @@
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_exsf0")
+bgm_bus = "BGM"
+sfx_bus = "Master"
 
 [node name="SfxContainer" type="Node" parent="."]

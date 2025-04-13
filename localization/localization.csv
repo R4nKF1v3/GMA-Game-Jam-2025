@@ -1,1 +1,25 @@
 key,en,es
+start,Start,Empezar
+exit,Exit,Salir
+dead,Dead,Muerto
+restart,Restart,Reiniciar
+discard,Discard,Descartar
+discard?,Discard?,¿Descartar?
+yes,Yes,Si
+no,No,No
+workshop,Workshop,Taller
+installed,Installed,Instalados
+in stock,In Stock,En Inventario
+weapons,Weapons,Armas
+core,Core,Núcleo
+shield,Shield,Escudos
+cores,Cores,Núcleos
+shields,Shields,Escudos
+equip,Equip,Equipar
+unequip,Unequip,Desequipar
+health: ,Health: ,Salud: 
+shield: ,Shield: ,Escudo: 
+recharge: ,Recharge: ,Recarga: 
+cooldown: ,Cooldown: ,Demora: 
+damage: ,Damage: ,Daño: 
+heat: ,Heat: ,Calor: 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxvfjdfk0ha1q"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg-4d451e33f00a0cdb9c5927534a4a0f41.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Djent/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg-4d451e33f00a0cdb9c5927534a4a0f41.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

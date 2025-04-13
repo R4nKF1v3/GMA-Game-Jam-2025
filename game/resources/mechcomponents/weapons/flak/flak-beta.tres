@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MechWeaponResource" load_steps=4 format=3 uid="uid://cioc2lr2mkwof"]
+
+[ext_resource type="Texture2D" uid="uid://cinsbn12ypgkm" path="res://assets/textures/components/flak_icon.png" id="1_ujxe0"]
+[ext_resource type="PackedScene" uid="uid://78dm5cuwn3ri" path="res://game/entities/components/scenes/weapons/flak.tscn" id="2_ujxe0"]
+[ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="3_65v1w"]
+
+[resource]
+script = ExtResource("3_65v1w")
+icon = ExtResource("1_ujxe0")
+scene = ExtResource("2_ujxe0")
+base_damage = 1.0
+damage_per_level = 0.5
+heat_buildup = 2.5
+metadata/_custom_type_script = "uid://bf1thy2cjf5yr"

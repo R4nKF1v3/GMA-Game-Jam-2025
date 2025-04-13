@@ -1,17 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://bllv1q7eyo4gg"]
+[gd_scene load_steps=9 format=3 uid="uid://bllv1q7eyo4gg"]
 
 [ext_resource type="PackedScene" uid="uid://h5eqykjww24s" path="res://game/entities/mech.tscn" id="1_42rf6"]
 [ext_resource type="Script" uid="uid://brp12snw38mvt" path="res://game/entities/enemy_mech.gd" id="2_4378r"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4378r"]
+radius = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4378r"]
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.925338, 0.925338, 3.08037e-06, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4378r"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 5.62
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_b1xhv"]
+size = 0.08
+sections = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro36w"]
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.556727, 0.613245, 0.631107, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1xhv"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+
 [node name="EnemyMech" instance=ExtResource("1_42rf6")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("2_4378r")
+HEAT_CAPACITY = 50.0
+HEAT_REGEN_RATE = 10.0
+HEAT_COOLDOWN_DELAY = 2.0
+target_collision = 3
 
 [node name="Skeleton3D" parent="Mech/Armature" index="0"]
 bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
 bones/3/rotation = Quaternion(-1.3512e-08, 0.460861, 0.887472, -3.93073e-08)
+bones/3/scale = Vector3(1, 1, 0.999988)
 bones/4/rotation = Quaternion(-0.500893, -1.30688e-07, -2.84217e-13, 0.865509)
 bones/5/rotation = Quaternion(4.86419e-08, 0.825765, 0.564015, -1.15681e-07)
 bones/6/rotation = Quaternion(4.17058e-08, 0.0840747, 0.996459, 2.37569e-08)
+bones/6/scale = Vector3(1, 0.999999, 0.99999)
 bones/7/rotation = Quaternion(-0.500893, 1.30688e-07, 2.98428e-13, 0.865509)
 bones/8/rotation = Quaternion(-8.16585e-08, 0.545316, 0.838231, 7.41771e-08)
 bones/15/position = Vector3(0.54, 0.28, 0.5)
@@ -22,5 +65,55 @@ bones/17/rotation = Quaternion(0.850651, 0, 0, 0.525731)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8382, -0.0265455)
+
+[node name="ArmL" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="0"]
+transform = Transform3D(0.999848, 0, -0.0174524, 0, 1, 0, 0.0174524, 0, 0.999848, 0.548721, 0.33171, 0.0265455)
+
+[node name="ArmR" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="1"]
+transform = Transform3D(-0.999848, 1.52574e-09, 0.0174524, 0, 1, -8.74228e-08, 0.0174524, 8.74095e-08, 0.999848, -0.554226, 0.331795, 0.0265455)
+
+[node name="ShoulderL" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="2"]
+transform = Transform3D(0.999848, -0.000304586, -0.0174497, 0, 0.999848, -0.0174524, 0.0174524, 0.0174497, 0.999695, 0.554226, 0.972179, -0.179642)
+
+[node name="ShoulderR" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="3"]
+transform = Transform3D(-0.999848, 0.000304586, 0.0174497, 0, 0.999848, -0.0174524, 0.0174524, 0.0174497, 0.999695, -0.554226, 0.972286, -0.179642)
+
+[node name="Label3D" type="Label3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="4"]
+transform = Transform3D(0.977027, -0.0931997, 0.191656, -0.0162573, 0.864092, 0.503072, -0.212495, -0.494631, 0.842726, 0.192795, 0.336915, 0.388677)
+pixel_size = 0.002
+text = "NORDELTA"
+
+[node name="DetectionArea" type="Area3D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74733, 0)
+shape = SubResource("SphereShape3D_4378r")
+
+[node name="DamageParticles" type="GPUParticles3D" parent="." index="4"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94, 0)
+material_override = SubResource("StandardMaterial3D_4378r")
+emitting = false
+amount = 16
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_4378r")
+draw_pass_1 = SubResource("RibbonTrailMesh_b1xhv")
+
+[node name="KilledParticles" type="GPUParticles3D" parent="." index="5"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94, 0)
+material_override = SubResource("StandardMaterial3D_ro36w")
+emitting = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_b1xhv")
+draw_pass_1 = SubResource("RibbonTrailMesh_b1xhv")
+
+[connection signal="killed" from="." to="." method="_on_killed"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 
 [editable path="Mech"]

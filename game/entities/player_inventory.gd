@@ -35,7 +35,10 @@ func set_weapon_to_slot(weapon_data: MechWeaponData, slot: int) -> void:
 		return
 	
 	active_weapons[slot] = weapon_data
-	player.add_weapon(weapon_data.get_scene(), slot)
+	if weapon_data:
+		player.add_weapon(weapon_data.get_scene(), slot)
+	else:
+		player.remove_weapon(slot)
 
 
 func set_core_as_active(core_data: MechComponentData) -> void:
@@ -46,3 +49,10 @@ func set_core_as_active(core_data: MechComponentData) -> void:
 func set_shield_as_active(shield_data: MechComponentData) -> void:
 	active_shield = shield_data
 	player.add_shield(active_shield)
+
+
+func refresh() -> void:
+	active_core.set_active(player)
+	active_shield.set_active(player)
+	player.hp_updated.emit(player.current_hp, player.max_hp)
+	player.shields_updated.emit(player.current_shields, player.max_shields)

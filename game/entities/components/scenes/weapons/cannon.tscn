@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://vr2u4h8hcu2"]
+
+[ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/components/scenes/weapons/mech_weapon.tscn" id="1_1u4gm"]
+[ext_resource type="ArrayMesh" uid="uid://dyaay66nucqs0" path="res://assets/models/mech/weapons/cannon.res" id="2_e5whf"]
+[ext_resource type="AudioStream" uid="uid://u4sigq4v72al" path="res://assets/sounds/sfx/game/762x39 Single Isolated WAV.wav" id="2_hn1r3"]
+
+[node name="Cannon" instance=ExtResource("1_1u4gm")]
+rate_of_fire = 2.0
+
+[node name="TargetPointRaycast" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134861, 0, 0)
+
+[node name="ShootRaycast" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134861, 0, 0)
+
+[node name="FireParticles" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134897, 0, 0.867249)
+
+[node name="FireSound" parent="." index="3"]
+stream = ExtResource("2_hn1r3")
+
+[node name="Cannon" type="MeshInstance3D" parent="." index="4"]
+mesh = ExtResource("2_e5whf")
