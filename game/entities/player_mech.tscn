@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8rgtifrxno6s"]
+[gd_scene load_steps=24 format=3 uid="uid://8rgtifrxno6s"]
 
 [ext_resource type="PackedScene" uid="uid://h5eqykjww24s" path="res://game/entities/mech.tscn" id="1_hicsm"]
 [ext_resource type="Script" uid="uid://gp885w8rqekq" path="res://game/entities/player_mech.gd" id="2_sx2kh"]
@@ -6,7 +6,28 @@
 [ext_resource type="Script" uid="uid://bf1thy2cjf5yr" path="res://game/entities/components/data/weapons/MechWeaponResource.gd" id="3_eq626"]
 [ext_resource type="Texture2D" uid="uid://c8y8xpg66j7jx" path="res://assets/textures/vecteezy_capybara-with-donut_54792827.png" id="5_oyl8l"]
 [ext_resource type="Texture2D" uid="uid://bggagshtlh2oe" path="res://assets/textures/vecteezy_capybara-clear-background_55758280.png" id="5_phhfm"]
+[ext_resource type="Shader" uid="uid://gxyyona7t4mn" path="res://assets/shaders/psx_camera_filter.gdshader" id="6_k33q6"]
 [ext_resource type="Texture2D" uid="uid://dbs3gho38gcjf" path="res://assets/textures/UI/Elements-01.png" id="8_k33q6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u21ss"]
+render_priority = 0
+shader = ExtResource("6_k33q6")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0.560955, 0.560955, 0.560955, 1)
+shader_parameter/noise_color = Color(0.151276, 0.151276, 0.151276, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_oyl8l"]
+material = SubResource("ShaderMaterial_u21ss")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_phhfm"]
 length = 0.001
@@ -80,6 +101,22 @@ border_width_right = 26
 border_width_bottom = 24
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oyl8l"]
+texture = ExtResource("8_k33q6")
+texture_margin_left = 15.4
+texture_margin_top = 14.4946
+texture_margin_right = 30.4579
+texture_margin_bottom = 25.6198
+region_rect = Rect2(2632, 2574, 936, 125)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33q6"]
+bg_color = Color(0, 0.996078, 0.996078, 1)
+border_width_left = 14
+border_width_top = 13
+border_width_right = 26
+border_width_bottom = 24
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="Gradient" id="Gradient_oyl8l"]
 offsets = PackedFloat32Array(0.417722, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.25098)
@@ -101,17 +138,14 @@ MAX_TILT = 0.785398
 starting_weapons = Array[ExtResource("3_eq626")]([])
 starting_core = null
 starting_shield = null
-ACCEL = 24.0
 HEAT_CAPACITY = 400.0
 HEAT_REGEN_RATE = 80.0
 CAN_SHIELD_GATE = true
 target_collision = 5
 
 [node name="Skeleton3D" parent="Mech/Armature" index="0"]
-bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
 bones/2/position = Vector3(0, 1.48, 0)
 bones/3/rotation = Quaternion(-1.3512e-08, 0.460861, 0.887472, -3.93073e-08)
-bones/3/scale = Vector3(1, 1, 0.999988)
 bones/4/rotation = Quaternion(-0.500893, -1.30688e-07, -2.84217e-13, 0.865509)
 bones/5/rotation = Quaternion(4.86419e-08, 0.825765, 0.564015, -1.15681e-07)
 bones/6/rotation = Quaternion(4.17058e-08, 0.0840747, 0.996459, 2.37569e-08)
@@ -120,7 +154,6 @@ bones/7/rotation = Quaternion(-0.500893, 1.30688e-07, 2.98428e-13, 0.865509)
 bones/8/rotation = Quaternion(-8.16585e-08, 0.545316, 0.838231, 7.41771e-08)
 bones/15/position = Vector3(0.54, 0.28, 0.5)
 bones/15/rotation = Quaternion(0.850651, 0, 0, 0.525731)
-bones/16/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
 bones/17/position = Vector3(-0.54, 0.28, -0.5)
 bones/17/rotation = Quaternion(0.850651, 0, 0, 0.525731)
 
@@ -149,6 +182,10 @@ fov = 80.0
 size = 7.31429
 near = 0.1
 far = 16384.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2/Camera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("QuadMesh_oyl8l")
 
 [node name="Sprite3D" type="Sprite3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="6"]
 transform = Transform3D(1, 1.56704e-08, 1.41591e-09, -1.56704e-08, 0.983804, 0.179249, 1.41592e-09, -0.179249, 0.983804, -2.78607e-08, 0.539561, 0.318689)
@@ -186,7 +223,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CameraCrosshairs" type="Control" parent="PlayerUI/HUD" index="0"]
-modulate = Color(1, 1, 1, 0.74902)
+modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -436,6 +473,7 @@ stretch_mode = 5
 
 [node name="HeatProgressBar" type="ProgressBar" parent="PlayerUI/HUD" index="2"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -450,11 +488,24 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxTexture_eq626")
 theme_override_styles/fill = SubResource("StyleBoxFlat_eq626")
-step = 0.1
 value = 50.0
 show_percentage = false
 
-[node name="ShieldHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="3"]
+[node name="JumpProgressBar" type="ProgressBar" parent="PlayerUI/HUD" index="3"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 46.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_oyl8l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k33q6")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ShieldHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="4"]
 unique_name_in_owner = true
 visible = false
 self_modulate = Color(0.219608, 0.556863, 1, 1)
@@ -468,7 +519,7 @@ texture = SubResource("GradientTexture2D_k33q6")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="HpHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="4"]
+[node name="HpHitFeedback" type="TextureRect" parent="PlayerUI/HUD" index="5"]
 unique_name_in_owner = true
 visible = false
 self_modulate = Color(1, 0.027451, 0, 1)
@@ -484,6 +535,7 @@ metadata/_edit_lock_ = true
 
 [connection signal="heat_updated" from="." to="." method="_on_heat_updated"]
 [connection signal="hp_hit" from="." to="." method="_on_hp_hit"]
+[connection signal="jump_updated" from="." to="." method="_on_jump_updated"]
 [connection signal="shields_hit" from="." to="." method="_on_shields_hit"]
 
 [editable path="Mech"]

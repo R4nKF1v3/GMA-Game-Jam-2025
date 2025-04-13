@@ -1,11 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddm66hyj3i4pm"]
+[gd_scene load_steps=7 format=3 uid="uid://ddm66hyj3i4pm"]
 
 [ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/components/scenes/weapons/mech_weapon.tscn" id="1_qcmy6"]
 [ext_resource type="ArrayMesh" uid="uid://fjbagh6bgwsy" path="res://assets/models/mech/weapons/gatling.res" id="2_n4lli"]
-[ext_resource type="AudioStream" uid="uid://v05xdu5kneib" path="res://assets/sounds/sfx/game/22LR Single Isolated WAV.wav" id="3_f0qs8"]
+[ext_resource type="AudioStream" uid="uid://ns71ngkygrv3" path="res://assets/sounds/sfx/game/weapons/621000__samsterbirdies__cannon-explosion-sound.wav" id="3_f0qs8"]
+
+[sub_resource type="Animation" id="Animation_f0qs8"]
+resource_name = "recoil"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gatling:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.05), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8mo5l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gatling:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8mo5l"]
+_data = {
+&"RESET": SubResource("Animation_8mo5l"),
+&"recoil": SubResource("Animation_f0qs8")
+}
 
 [node name="Gatling" instance=ExtResource("1_qcmy6")]
-rate_of_fire = 0.1
+rate_of_fire = 0.05
+spread = 0.035
 
 [node name="TargetPointRaycast" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201348, 0, 0)
@@ -19,5 +58,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201, 0, 0)
 enabled = true
 target_position = Vector3(0, 0, 1000)
 
+[node name="FireParticles" parent="." index="3"]
+amount = 3
+
 [node name="FireSound" parent="." index="4"]
 stream = ExtResource("3_f0qs8")
+attenuation_model = 0
+unit_size = 1000.0
+max_db = -20.0
+pitch_scale = 2.0
+max_distance = 10000.0
+max_polyphony = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_8mo5l")
+}
+
+[connection signal="fired" from="." to="AnimationPlayer" method="stop"]
+[connection signal="fired" from="." to="AnimationPlayer" method="play" binds= [&"recoil"]]

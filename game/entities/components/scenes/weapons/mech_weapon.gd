@@ -1,6 +1,7 @@
 class_name MechWeapon
 extends Node3D
 
+signal fired()
 signal heat_generated(amount)
 
 @onready var target_point_raycast: RayCast3D = $TargetPointRaycast
@@ -11,6 +12,8 @@ signal heat_generated(amount)
 @export var rate_of_fire: float
 @export var spread: float
 @export var range: float = 1000.0
+
+var initial_delay: float = 0.0
 
 var data: MechWeaponData
 
@@ -26,6 +29,9 @@ var shooting: bool = false :
 			if shoot_timer && shoot_timer.time_left > 0.0:
 				if !shoot_timer.timeout.is_connected(shoot):
 					shoot_timer.timeout.connect(shoot)
+			elif initial_delay > 0.0:
+				shoot_timer = get_tree().create_timer(initial_delay)
+				shoot_timer.timeout.connect(shoot)
 			else:
 				shoot()
 		elif shoot_timer && shoot_timer.timeout.is_connected(shoot):
@@ -34,12 +40,16 @@ var shooting: bool = false :
 var shoot_timer: SceneTreeTimer
 
 
+func add_ignored_object(object: CollisionObject3D) -> void:
+	target_point_raycast.add_exception(object)
+	shoot_raycast.add_exception(object)
+
+
 func shoot() -> void:
 	if !shooting:
 		return
 	fire_particles.restart()
 	fire_particles.emitting = true
-	fire_sound.stop()
 	fire_sound.play()
 	shoot_raycast.target_position = Vector3.FORWARD.rotated(
 		Vector3(
@@ -65,6 +75,7 @@ func shoot() -> void:
 				data.get_damage()
 			)
 	heat_generated.emit(data.get_heat_buildup())
+	fired.emit()
 	shoot_timer = get_tree().create_timer(rate_of_fire)
 	shoot_timer.timeout.connect(shoot)
 

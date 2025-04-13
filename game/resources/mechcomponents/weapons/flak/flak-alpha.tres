@@ -8,7 +8,7 @@
 script = ExtResource("3_hbu1d")
 icon = ExtResource("1_lns7s")
 scene = ExtResource("2_lns7s")
-base_damage = 4.0
-damage_per_level = 2.0
-heat_buildup = 10.0
+base_damage = 1.0
+damage_per_level = 0.5
+heat_buildup = 2.5
 metadata/_custom_type_script = "uid://bf1thy2cjf5yr"

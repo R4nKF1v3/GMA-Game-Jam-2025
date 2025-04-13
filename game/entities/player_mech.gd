@@ -8,6 +8,7 @@ signal shop_open_requested()
 @onready var hud: Control = %HUD
 @onready var weapon_crosshairs: Array = %WeaponCrosshairs.get_children()
 @onready var heat_progress_bar: ProgressBar = %HeatProgressBar
+@onready var jump_progress_bar: ProgressBar = %JumpProgressBar
 @onready var hp_progress_bar: TextureProgressBar = %HpProgressBar
 @onready var shields_progress_bar: TextureProgressBar = %ShieldsProgressBar
 @onready var shield_hit_feedback: TextureRect = %ShieldHitFeedback
@@ -88,7 +89,7 @@ func _physics_process(delta: float):
 		(Input.get_action_strength("move_left") - Input.get_action_strength("move_right")) * float(!shop_open),
 		0,
 		(Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")) * float(!shop_open)
-	) * MAX_SPEED) * float(!dead)
+	).normalized() * MAX_SPEED) * float(!dead)
 	var jumping: bool = Input.is_action_pressed("jump") && !shop_open && !dead
 	
 	_process_movement(
@@ -156,7 +157,7 @@ func _on_shields_hit() -> void:
 		shield_hit_feedback,
 		"modulate",
 		Color.TRANSPARENT,
-		0.1
+		1.0
 	)
 
 
@@ -170,5 +171,11 @@ func _on_hp_hit() -> void:
 		hp_hit_feedback,
 		"modulate",
 		Color.TRANSPARENT,
-		0.1
+		1.0
 	)
+
+
+func _on_jump_updated(amount: float, maximum: float) -> void:
+	jump_progress_bar.max_value = maximum
+	jump_progress_bar.value = amount
+	jump_progress_bar.modulate.a = abs(1.0 - amount / maximum)

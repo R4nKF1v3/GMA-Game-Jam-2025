@@ -76,13 +76,6 @@ script = ExtResource("1_4fuuu")
 level_manager = NodePath("LevelManager")
 bgm_bus = "BGM"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vasa2")
-
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("player", "level_instances_container", "enemies_container")]
 script = ExtResource("1_vasa2")
 player = NodePath("../World/PlayerMech")
@@ -97,6 +90,13 @@ weapons_available = Array[ExtResource("4_u5opy")]([ExtResource("8_dxwpq"), ExtRe
 cores_available = Array[ExtResource("11_5e03w")]([ExtResource("12_leid8"), ExtResource("13_8bboj"), ExtResource("6_j8tme")])
 shields_available = Array[ExtResource("15_q52ks")]([ExtResource("16_jucfl"), ExtResource("17_jdpby"), ExtResource("7_3vho3")])
 music_tracks = Array[AudioStream]([ExtResource("19_posua"), ExtResource("20_gvtgv"), ExtResource("21_5ywmu"), ExtResource("22_mhp6k"), ExtResource("23_vkvnp"), ExtResource("24_urpib"), ExtResource("25_cieqw"), ExtResource("26_ta815"), ExtResource("27_64wtb"), ExtResource("28_0rekh"), ExtResource("29_281ou"), ExtResource("30_nrbry")])
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vasa2")
 
 [node name="World" type="Node3D" parent="."]
 

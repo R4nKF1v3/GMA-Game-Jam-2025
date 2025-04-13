@@ -7,6 +7,7 @@ signal shields_updated(amount, maximum)
 signal shields_hit()
 signal killed()
 signal heat_updated(amount, maximum)
+signal jump_updated(amount, maximum)
 
 @export var GRAVITY: float = 9.8
 @export var ACCEL: float = 12.0
@@ -84,6 +85,8 @@ func add_weapon(weapon: MechWeapon, slot: int) -> void:
 	weapon_slots[slot].add_child(weapon)
 	weapon.target_collision = target_collision
 	weapon.heat_generated.connect(_on_weapon_heat_generated)
+	weapon.initial_delay = (slot % 2) * (weapon.rate_of_fire / 2)
+	weapon.add_ignored_object(self)
 
 
 func remove_weapon(slot: int) -> void:
@@ -128,12 +131,14 @@ func _process_movement(
 			velocity.y += FLOAT_FORCE * delta
 		current_float_capacity -= delta
 		float_capacity_recharge = FLOAT_CAP_RECHARGE_RATE
+		jump_updated.emit(current_float_capacity, FLOAT_CAPACITY)
 		if !jump_audio.playing:
 			jump_audio.play()
 	else:
 		float_capacity_recharge = max(float_capacity_recharge - delta, 0.0)
 		if is_equal_approx(float_capacity_recharge, 0.0):
 			current_float_capacity = min(current_float_capacity + delta, FLOAT_CAPACITY)
+			jump_updated.emit(current_float_capacity, FLOAT_CAPACITY)
 		if jump_audio.playing:
 			jump_audio.stop()
 	velocity.y -= GRAVITY * delta
@@ -149,10 +154,10 @@ func _process_movement(
 	
 	# input velocity to the AnimationTree and get our "true" velocity,
 	# which must be transformed back to global space
-	if is_on_floor():
-		var movement: Vector3 = global_basis * (anim.get_root_motion_position()) / delta
-		velocity.x = movement.x
-		velocity.z = movement.z
+	#if is_on_floor():
+		#var movement: Vector3 = global_basis * (anim.get_root_motion_position()) / delta
+		#velocity.x = movement.x
+		#velocity.z = movement.z
 	set_up_direction(Vector3.UP)
 	move_and_slide()
 	velocity = velocity

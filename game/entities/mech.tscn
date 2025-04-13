@@ -31,8 +31,8 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_q0gqj")
 blend_point_3/pos = Vector2(-6, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_xhcjw")
 blend_point_4/pos = Vector2(0, -6)
-min_space = Vector2(-6, -6)
-max_space = Vector2(6, 6)
+min_space = Vector2(-12, -12)
+max_space = Vector2(12, 12)
 snap = Vector2(1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yp3ga"]
@@ -47,23 +47,23 @@ script = ExtResource("1_wa243")
 
 [node name="Skeleton3D" parent="Mech/Armature" index="0"]
 bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
-bones/2/position = Vector3(0, 1.48402, 0)
-bones/3/rotation = Quaternion(-1.15406e-08, 0.471057, 0.882103, -3.71675e-08)
+bones/2/position = Vector3(0, 1.48018, 0)
+bones/3/rotation = Quaternion(-1.35769e-08, 0.459283, 0.88829, -3.91117e-08)
 bones/3/scale = Vector3(1, 1, 0.999988)
-bones/4/rotation = Quaternion(-0.50532, -1.30299e-07, -2.95319e-13, 0.862932)
-bones/5/rotation = Quaternion(4.93908e-08, 0.817028, 0.576598, -1.17861e-07)
-bones/6/rotation = Quaternion(4.12504e-08, 0.0670051, 0.997753, 1.9554e-08)
+bones/4/rotation = Quaternion(-0.501101, -1.3067e-07, -2.8566e-13, 0.865389)
+bones/5/rotation = Quaternion(4.86834e-08, 0.825274, 0.564733, -1.15627e-07)
+bones/6/rotation = Quaternion(4.15819e-08, 0.0855734, 0.996332, 2.37033e-08)
 bones/6/scale = Vector3(1, 0.999999, 0.99999)
-bones/7/rotation = Quaternion(-0.491252, 1.31519e-07, 2.8777e-13, 0.871017)
-bones/8/rotation = Quaternion(-7.7857e-08, 0.558003, 0.829839, 7.46804e-08)
-bones/15/position = Vector3(0.54, 0.298351, 0.517688)
-bones/15/rotation = Quaternion(0.839034, 7.84941e-18, 4.8512e-18, 0.544079)
+bones/7/rotation = Quaternion(-0.500452, 1.30726e-07, 3.05991e-13, 0.865764)
+bones/8/rotation = Quaternion(-8.13988e-08, 0.546379, 0.837538, 7.43958e-08)
+bones/15/position = Vector3(0.54, 0.280942, 0.495412)
+bones/15/rotation = Quaternion(0.851253, 3.13307e-19, 1.93634e-19, 0.524755)
 bones/16/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
-bones/17/position = Vector3(-0.54, 0.292592, -0.52936)
-bones/17/rotation = Quaternion(0.861614, -4.00751e-18, -2.47677e-18, 0.507565)
+bones/17/position = Vector3(-0.54, 0.280312, -0.495391)
+bones/17/rotation = Quaternion(0.850259, -1.40646e-19, -8.6924e-20, 0.526364)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84223, -0.0265455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83839, -0.0265455)
 
 [node name="ArmL" type="Node3D" parent="Mech/Armature/Skeleton3D/Cabin_2/Cabin_2" index="0"]
 unique_name_in_owner = true
@@ -109,7 +109,7 @@ root_motion_track = NodePath("Armature/Skeleton3D:Root")
 root_motion_local = false
 tree_root = SubResource("AnimationNodeBlendSpace2D_l3c2a")
 anim_player = NodePath("../Mech/AnimationPlayer")
-parameters/blend_position = Vector2(0, 0.527472)
+parameters/blend_position = Vector2(0, -0.0219784)
 
 [node name="RootMotionView" type="RootMotionView" parent="AnimationTree"]
 animation_path = NodePath("..")

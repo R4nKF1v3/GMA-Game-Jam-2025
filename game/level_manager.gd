@@ -124,14 +124,16 @@ func _setup_new_enemy(spawn_position: Vector3) -> void:
 
 
 func _on_enemy_killed(enemy: EnemyMech) -> void:
-	match randi() % 3:
-		0:
+	var level_up: int = randi() % 2 + 1
+	match randi() % 4:
+		0, 1:
 			var random_weapon: MechWeaponData = enemy.enemy_weapons.pick_random()
-			random_weapon.level += 1
+			random_weapon.level += level_up
+			random_weapon.damage_mult = 1.0
 			player.inventory.add_weapon_to_inventory(random_weapon)
-		1:
-			enemy.enemy_core.level += 1
-			player.inventory.add_core_to_inventory(enemy.enemy_core)
 		2:
-			enemy.enemy_shield.level += 1
+			enemy.enemy_core.level += level_up
+			player.inventory.add_core_to_inventory(enemy.enemy_core)
+		3:
+			enemy.enemy_shield.level += level_up
 			player.inventory.add_shield_to_inventory(enemy.enemy_shield)

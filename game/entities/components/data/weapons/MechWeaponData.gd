@@ -4,6 +4,9 @@ extends RefCounted
 var resource_data: MechWeaponResource
 var level: int
 
+var damage_mult: float = 1.0
+
+
 var icon: Texture : 
 	set(value):
 		return
@@ -27,7 +30,7 @@ func get_stats() -> PackedStringArray:
 
 
 func get_damage() -> float:
-	return resource_data.get_damage(level)
+	return resource_data.get_damage(level) * damage_mult
 
 
 func get_heat_buildup() -> float:

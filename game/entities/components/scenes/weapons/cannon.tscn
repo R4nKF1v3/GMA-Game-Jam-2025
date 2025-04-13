@@ -1,11 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://vr2u4h8hcu2"]
+[gd_scene load_steps=8 format=3 uid="uid://vr2u4h8hcu2"]
 
 [ext_resource type="PackedScene" uid="uid://cmger0ue5u76q" path="res://game/entities/components/scenes/weapons/mech_weapon.tscn" id="1_1u4gm"]
 [ext_resource type="ArrayMesh" uid="uid://dyaay66nucqs0" path="res://assets/models/mech/weapons/cannon.res" id="2_e5whf"]
-[ext_resource type="AudioStream" uid="uid://u4sigq4v72al" path="res://assets/sounds/sfx/game/762x39 Single Isolated WAV.wav" id="2_hn1r3"]
+[ext_resource type="AudioStream" uid="uid://ns71ngkygrv3" path="res://assets/sounds/sfx/game/weapons/621000__samsterbirdies__cannon-explosion-sound.wav" id="2_hn1r3"]
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hn1r3"]
+size = 0.06
+sections = 3
+section_length = 0.05
+
+[sub_resource type="Animation" id="Animation_hn1r3"]
+resource_name = "recoil"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cannon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.131984), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ty1b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cannon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ty1b"]
+_data = {
+&"RESET": SubResource("Animation_1ty1b"),
+&"recoil": SubResource("Animation_hn1r3")
+}
 
 [node name="Cannon" instance=ExtResource("1_1u4gm")]
 rate_of_fire = 2.0
+spread = 0.009
 
 [node name="TargetPointRaycast" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134861, 0, 0)
@@ -15,9 +57,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134861, 0, 0)
 
 [node name="FireParticles" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134897, 0, 0.867249)
+draw_pass_1 = SubResource("RibbonTrailMesh_hn1r3")
 
 [node name="FireSound" parent="." index="3"]
 stream = ExtResource("2_hn1r3")
+volume_db = -40.0
 
 [node name="Cannon" type="MeshInstance3D" parent="." index="4"]
 mesh = ExtResource("2_e5whf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_1ty1b")
+}
+
+[connection signal="fired" from="." to="AnimationPlayer" method="play" binds= [&"recoil"]]

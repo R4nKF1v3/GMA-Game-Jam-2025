@@ -51,6 +51,7 @@ func setup() -> void:
 			continue
 		var component: Control = component_scene.instantiate()
 		weapons_stock_container.add_child(component)
+		weapons_stock_container.move_child(component, 0)
 		component.setup(weapon)
 		component.is_equipped = false
 		component.can_change = !all_weapons_occupied
@@ -66,6 +67,7 @@ func setup() -> void:
 			continue
 		var component: Control = component_scene.instantiate()
 		cores_stock_container.add_child(component)
+		cores_stock_container.move_child(component, 0)
 		component.setup(core)
 		component.is_equipped = false
 		component.can_change = true
@@ -81,6 +83,7 @@ func setup() -> void:
 			continue
 		var component: Control = component_scene.instantiate()
 		shields_stock_container.add_child(component)
+		shields_stock_container.move_child(component, 0)
 		component.setup(shield)
 		component.is_equipped = false
 		component.can_change = true

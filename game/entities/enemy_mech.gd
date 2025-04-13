@@ -4,6 +4,8 @@ extends Mech
 @onready var damage_particles: GPUParticles3D = %DamageParticles
 @onready var killed_particles: GPUParticles3D = %KilledParticles
 
+@export var damage_mult: float = 0.5
+
 var enemy_weapons: Array[MechWeaponData]
 var enemy_core: MechComponentData
 var enemy_shield: MechComponentData
@@ -34,6 +36,7 @@ func setup(
 	enemy_shield = p_shield
 	
 	for i in enemy_weapons.size():
+		enemy_weapons[i].damage_mult = damage_mult
 		add_weapon(
 			enemy_weapons[i].get_scene(),
 			i
@@ -46,6 +49,7 @@ func setup(
 var query_delay: float = 0.0
 var last_query_result: bool = false
 var last_seen: Vector3
+var slide_dir: int = 0
 
 
 func _physics_process(delta: float) -> void:
@@ -63,9 +67,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		var target_visible: bool = _check_target_visible()
 		shooting = target_visible
-		if !target_visible:
+		
+		jumping = abs(global_position.y - target_locked.global_position.y) > 3.0
+		if target_visible:
+			move_direction = pivot_target.x * slide_dir * MAX_SPEED * 0.5
+		else:
 			var dir_to_target: Vector3 = global_position.direction_to(last_seen)
-			jumping = abs(global_position.y - target_locked.global_position.y) > 3.0
 			move_direction =  Vector3(
 				dir_to_target.x,
 				0,
@@ -96,9 +103,12 @@ func _check_target_visible() -> bool:
 		detect_player_query.from = head.global_position
 		detect_player_query.to = target_in_range.head.global_position
 		var result: Dictionary = space_state.intersect_ray(detect_player_query)
+		var prev_seen: bool = last_query_result
 		last_query_result = result.get("collider") == target_in_range
 		if last_query_result:
 			last_seen = result.get("position", last_seen)
+		if prev_seen != last_query_result:
+			slide_dir = randi() % 3 - 1
 	return last_query_result
 
 
