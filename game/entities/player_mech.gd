@@ -46,14 +46,15 @@ func _ready():
 	inventory.add_shield_to_inventory(shield_data)
 	inventory.set_core_as_active(core_data)
 	inventory.set_shield_as_active(shield_data)
-	
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_camera") && !shop_open:
-		freelook = !freelook
-		camera_offset = Vector2.ZERO
+	if event.is_action("toggle_camera") && !shop_open:
+		if event.is_action_pressed("toggle_camera"):
+			freelook = true
+		elif event.is_action_released("toggle_camera"):
+			freelook = false
+			camera_offset = Vector2.ZERO
 	elif event.is_action_pressed("release_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if mouse_released else Input.MOUSE_MODE_VISIBLE)
 		mouse_released = !mouse_released
@@ -87,8 +88,8 @@ func _physics_process(delta: float):
 		(Input.get_action_strength("move_left") - Input.get_action_strength("move_right")) * float(!shop_open),
 		0,
 		(Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")) * float(!shop_open)
-	) * MAX_SPEED)
-	var jumping: bool = Input.is_action_pressed("jump") && !shop_open
+	) * MAX_SPEED) * float(!dead)
+	var jumping: bool = Input.is_action_pressed("jump") && !shop_open && !dead
 	
 	_process_movement(
 		delta,

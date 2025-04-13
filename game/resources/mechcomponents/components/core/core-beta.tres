@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_myfxd")
 base_hp = 5.0
-hp_per_level = 2.5
+hp_per_level = 5.0
 base_shield_capacity = 10.0
-shield_capacity_per_level = 5.0
+shield_capacity_per_level = 10.0
 icon = ExtResource("1_s33x8")
 metadata/_custom_type_script = "uid://bsc116tm3iioy"

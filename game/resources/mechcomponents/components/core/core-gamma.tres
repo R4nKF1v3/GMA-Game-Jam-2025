@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_wx67n")
 base_hp = 7.5
-hp_per_level = 3.75
+hp_per_level = 7.5
 base_shield_capacity = 7.5
-shield_capacity_per_level = 3.75
+shield_capacity_per_level = 7.5
 icon = ExtResource("1_rg8t2")
 metadata/_custom_type_script = "uid://bsc116tm3iioy"

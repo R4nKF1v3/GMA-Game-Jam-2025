@@ -196,3 +196,23 @@ surface_material_override/0 = ExtResource("4_7551y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/MeshInstance3D7/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_1e5i7")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 16)
+mesh = SubResource("CylinderMesh_7551y")
+surface_material_override/0 = ExtResource("4_7551y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/MeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1e5i7")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, -1)
+mesh = SubResource("CylinderMesh_7551y")
+surface_material_override/0 = ExtResource("4_7551y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/MeshInstance3D9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/MeshInstance3D9/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1e5i7")

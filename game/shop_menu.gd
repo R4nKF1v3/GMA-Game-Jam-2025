@@ -39,9 +39,11 @@ func setup() -> void:
 	
 	core_component.setup(inventory.active_core)
 	core_component.can_change = false
+	core_component.discardable = false
 	
 	shield_component.setup(inventory.active_shield)
 	shield_component.can_change = false
+	shield_component.discardable = false
 	
 	_clean_container(weapons_stock_container)
 	for weapon in inventory.weapons_inventory:

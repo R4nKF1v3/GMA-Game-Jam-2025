@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_exyy5")
-icon = ExtResource("1_qmx5h")
 base_shield_recharge_rate = 1.0
 recharge_rate_per_level = 0.5
 base_shield_recharge_cooldown = 5.0
-shield_cooldown_per_level = 0.3
+shield_cooldown_per_level = -0.15
+icon = ExtResource("1_qmx5h")
 metadata/_custom_type_script = "uid://buqr6uq3coif"

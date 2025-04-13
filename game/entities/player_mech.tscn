@@ -108,20 +108,24 @@ CAN_SHIELD_GATE = true
 target_collision = 5
 
 [node name="Skeleton3D" parent="Mech/Armature" index="0"]
-bones/2/position = Vector3(0, 1.48169, 0)
-bones/3/rotation = Quaternion(-1.20135e-08, 0.469317, 0.88303, -3.60485e-08)
-bones/4/rotation = Quaternion(-0.493306, -1.31344e-07, -2.76668e-13, 0.869856)
-bones/5/rotation = Quaternion(5.00158e-08, 0.819221, 0.573477, -1.18347e-07)
-bones/6/rotation = Quaternion(4.15446e-08, 0.058745, 0.998273, 1.92283e-08)
-bones/7/rotation = Quaternion(-0.487414, 1.31845e-07, 2.83329e-13, 0.873171)
-bones/8/rotation = Quaternion(-7.78983e-08, 0.563458, 0.826145, 7.49034e-08)
-bones/15/position = Vector3(0.54, 0.296869, 0.535274)
-bones/15/rotation = Quaternion(0.834608, 7.20765e-18, 4.45458e-18, 0.550844)
-bones/17/position = Vector3(-0.54, 0.299181, -0.543438)
-bones/17/rotation = Quaternion(0.866882, -5.98487e-18, -3.69885e-18, 0.498514)
+bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/2/position = Vector3(0, 1.48, 0)
+bones/3/rotation = Quaternion(-1.3512e-08, 0.460861, 0.887472, -3.93073e-08)
+bones/3/scale = Vector3(1, 1, 0.999988)
+bones/4/rotation = Quaternion(-0.500893, -1.30688e-07, -2.84217e-13, 0.865509)
+bones/5/rotation = Quaternion(4.86419e-08, 0.825765, 0.564015, -1.15681e-07)
+bones/6/rotation = Quaternion(4.17058e-08, 0.0840747, 0.996459, 2.37569e-08)
+bones/6/scale = Vector3(1, 0.999999, 0.99999)
+bones/7/rotation = Quaternion(-0.500893, 1.30688e-07, 2.98428e-13, 0.865509)
+bones/8/rotation = Quaternion(-8.16585e-08, 0.545316, 0.838231, 7.41771e-08)
+bones/15/position = Vector3(0.54, 0.28, 0.5)
+bones/15/rotation = Quaternion(0.850651, 0, 0, 0.525731)
+bones/16/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/17/position = Vector3(-0.54, 0.28, -0.5)
+bones/17/rotation = Quaternion(0.850651, 0, 0, 0.525731)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83989, -0.0265455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8382, -0.0265455)
 
 [node name="Cabin_2" parent="Mech/Armature/Skeleton3D/Cabin_2" index="0"]
 rotation_edit_mode = 2
@@ -152,6 +156,9 @@ layers = 2
 pixel_size = 0.0002
 texture = ExtResource("5_phhfm")
 
+[node name="AnimationTree" parent="." index="1"]
+parameters/blend_position = Vector2(0, 0)
+
 [node name="ShopCameraPivot" type="Node3D" parent="." index="3"]
 
 [node name="ShopAnim" type="AnimationPlayer" parent="ShopCameraPivot" index="0"]
@@ -179,6 +186,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CameraCrosshairs" type="Control" parent="PlayerUI/HUD" index="0"]
+modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

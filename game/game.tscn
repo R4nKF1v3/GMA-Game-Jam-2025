@@ -91,6 +91,7 @@ enemies_container = NodePath("../World/EntitiesContainer")
 starting_tile_scene = ExtResource("3_h7iqs")
 tiles_scenes = Array[PackedScene]([ExtResource("4_3vho3"), ExtResource("5_qf6n1")])
 base_tiles = 1
+extra_enemies_per_level = 0.333
 enemy_scene = ExtResource("6_vsp63")
 weapons_available = Array[ExtResource("4_u5opy")]([ExtResource("8_dxwpq"), ExtResource("9_mhvfb"), ExtResource("5_y36n6"), ExtResource("11_urpib"), ExtResource("12_cieqw"), ExtResource("13_ta815"), ExtResource("14_64wtb"), ExtResource("15_0rekh"), ExtResource("20_mhvfb")])
 cores_available = Array[ExtResource("11_5e03w")]([ExtResource("12_leid8"), ExtResource("13_8bboj"), ExtResource("6_j8tme")])

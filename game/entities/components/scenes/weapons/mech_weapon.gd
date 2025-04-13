@@ -23,7 +23,11 @@ var shooting: bool = false :
 	set(value):
 		shooting = value
 		if shooting:
-			shoot()
+			if shoot_timer && shoot_timer.time_left > 0.0:
+				if !shoot_timer.timeout.is_connected(shoot):
+					shoot_timer.timeout.connect(shoot)
+			else:
+				shoot()
 		elif shoot_timer && shoot_timer.timeout.is_connected(shoot):
 			shoot_timer.timeout.disconnect(shoot)
 

@@ -20,6 +20,7 @@ signal heat_updated(amount, maximum)
 @export var HEAT_REGEN_RATE: float = 20.0
 @export var HEAT_COOLDOWN_DELAY: float = 1.0
 @export var CAN_SHIELD_GATE: bool = false
+@export var SHIELD_GATE_DURATION: float = 1.0
 
 @export_flags_3d_physics var target_collision: int
 
@@ -169,6 +170,9 @@ func _process_movement(
 	head.global_basis = pivot_target
 	head.rotation.x = -tilt_target
 	
+	if dead:
+		return
+	
 	if heat_cooldown > 0.0:
 		heat_cooldown -= delta
 	else:
@@ -216,7 +220,7 @@ func report_hit(damage: float) -> void:
 		shields_hit.emit()
 		shield_cd_timer = shield_recharge_delay
 		if CAN_SHIELD_GATE:
-			shield_gating = 0.5
+			shield_gating = SHIELD_GATE_DURATION
 	else:
 		current_hp = max(current_hp - damage, 0.0)
 		hp_updated.emit(current_hp, max_hp)
